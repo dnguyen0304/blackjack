@@ -131,15 +131,4 @@ public class DefaultDeckTest {
         assertEquals(Rank.FOUR, this.deck.draw().getRank());
     }
 
-    @Test
-    public void testIterator() {
-        // Remove the top card to simplify testing.
-        this.deck.draw();
-
-        for (Card card : this.deck) {
-            assertEquals(this.bottomCard.getRank(), card.getRank());
-            assertEquals(this.bottomCard.getSuit(), card.getSuit());
-        }
-    }
-
 }
