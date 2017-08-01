@@ -10,6 +10,6 @@ package com.github.dnguyen0304.blackjack;
  */
 public interface CardShuffleStrategy {
 
-	public void shuffle(Deck deck);
+    public void shuffle(Deck deck);
 
 }
