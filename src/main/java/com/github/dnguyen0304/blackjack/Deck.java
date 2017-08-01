@@ -7,8 +7,12 @@ public interface Deck extends Iterable<Card> {
 
 	public void add(Card card);
 
+	public void addToBottom(Card card);
+
 	public Card draw();
 
-	public void merge(Iterable<Card> other);
+	public Card drawFromBottom();
+
+	public void stackOnto(Deck other);
 
 }
