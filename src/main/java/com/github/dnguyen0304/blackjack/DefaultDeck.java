@@ -18,9 +18,8 @@ public class DefaultDeck implements Deck {
     }
 
     /**
-     * The DefaultDeck exhibits LIFO behavior by default. In other words, the
-     * last card yielded from the iterable becomes the first one drawn from
-     * the deck.
+     * The DefaultDeck exhibits LIFO behavior by default. In other words, the last
+     * card yielded from the iterable becomes the first one drawn from the deck.
      *
      * @param cards
      * @return
@@ -29,6 +28,17 @@ public class DefaultDeck implements Deck {
         Deck deck = new DefaultDeck();
         for (Card card : cards) {
             deck.add(card);
+        }
+        return deck;
+    }
+
+    public static Deck standard52() {
+        Deck deck = new DefaultDeck();
+        for (Suit suit : Suit.values()) {
+            for (Rank rank : Rank.values()) {
+                Card card = new DefaultCard(rank, suit);
+                deck.add(card);
+            }
         }
         return deck;
     }

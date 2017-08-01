@@ -5,8 +5,10 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -52,6 +54,43 @@ public class DefaultDeckTest {
         for (int i = cards.size() - 1; i > 0; i--) {
             assertEquals(cards.get(i).getRank(), deck.draw().getRank());
         }
+    }
+
+    @Test
+    public void testStandard52Count() {
+        int expectedCount = Rank.values().length * Suit.values().length;
+        Deck deck = DefaultDeck.standard52();
+        assertEquals(expectedCount, deck.getCount());
+    }
+
+    @Test
+    public void testStandard52UniqueRankCount() {
+        Set<Rank> uniqueRanks = new HashSet<Rank>();
+        Deck deck = DefaultDeck.standard52();
+        try {
+            while (true) {
+                Card card = deck.draw();
+                uniqueRanks.add(card.getRank());
+            }
+        } catch (NoSuchElementException e) {
+            // Don't do anything.
+        }
+        assertEquals(Rank.values().length, uniqueRanks.size());
+    }
+
+    @Test
+    public void testStandard52UniqueSuitCount() {
+        Set<Suit> uniqueSuits = new HashSet<Suit>();
+        Deck deck = DefaultDeck.standard52();
+        try {
+            while (true) {
+                Card card = deck.draw();
+                uniqueSuits.add(card.getSuit());
+            }
+        } catch (NoSuchElementException e) {
+            // Don't do anything.
+        }
+        assertEquals(Suit.values().length, uniqueSuits.size());
     }
 
     @Test
