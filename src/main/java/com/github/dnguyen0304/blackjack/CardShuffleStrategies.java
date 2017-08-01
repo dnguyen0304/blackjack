@@ -23,7 +23,8 @@ public class CardShuffleStrategies {
         public void shuffle(Deck deck) {
             // Create a temporary list where cards will be shuffled.
             List<Card> list = new ArrayList<Card>();
-            for (int i = 0; i < deck.getCount(); i++) {
+            int count = deck.getCount();
+            for (int i = 0; i < count; i++) {
                 Card card = deck.draw();
                 list.add(card);
             }
