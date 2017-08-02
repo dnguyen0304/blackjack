@@ -15,11 +15,7 @@ public class DefaultBlackjackTable implements BlackjackTable {
     }
 
     @Override
-    public void addDealer(Player dealer) throws IllegalStateException {
-        if (this.dealer != null) {
-            String message = "There is already a dealer at this table.";
-            throw new IllegalStateException(message);
-        }
+    public void setDealer(Player dealer) {
         this.addPlayer(dealer);
         this.dealer = dealer;
     }
