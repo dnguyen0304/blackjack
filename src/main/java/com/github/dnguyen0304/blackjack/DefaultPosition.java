@@ -7,7 +7,7 @@ public class DefaultPosition implements Position {
 
     @Override
     public Boolean isOpen() {
-        return this.player != null;
+        return this.player == null;
     }
 
     @Override
