@@ -11,6 +11,11 @@ public class DefaultTable implements Table {
     }
 
     @Override
+    public int getPlayerCount() {
+        return this.positions.size();
+    }
+
+    @Override
     public void addPlayer(Player player) throws IllegalStateException {
         Position position = this.nextOpenPosition();
         position.setPlayer(player);

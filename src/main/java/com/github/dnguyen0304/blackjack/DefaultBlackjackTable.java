@@ -9,6 +9,12 @@ public class DefaultBlackjackTable implements BlackjackTable {
         this.table = table;
     }
 
+    @Override
+    public int getPlayerCount() {
+        return this.table.getPlayerCount();
+    }
+
+    @Override
     public void addDealer(Player dealer) throws IllegalStateException {
         if (this.dealer != null) {
             String message = "There is already a dealer at this table.";
