@@ -12,6 +12,6 @@ public interface Deck {
 
     public Card drawFromBottom();
 
-    public void stackOnto(Deck other);
+    public void stackOnto(Deck base);
 
 }

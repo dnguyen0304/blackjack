@@ -10,11 +10,11 @@ public class DeckShuffleStrategies {
 
         @Override
         public Deck shuffle(Deck... decks) {
-            Deck deck = decks[0];
+            Deck base = decks[0];
             for (int i = 1; i < decks.length; i++) {
-                deck.stackOnto(decks[i]);
+                decks[i].stackOnto(base);
             }
-            return deck;
+            return base;
         }
 
     }

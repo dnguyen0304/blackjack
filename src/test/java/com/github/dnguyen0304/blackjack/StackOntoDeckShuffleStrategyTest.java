@@ -31,9 +31,9 @@ public class StackOntoDeckShuffleStrategyTest {
         for (int i = 0; i < this.cards.size(); i++) {
             Card card = this.cards.get(i);
             if (i < this.cards.size() / 2) {
-                this.other.add(card);
-            } else {
                 this.deck.add(card);
+            } else {
+                this.other.add(card);
             }
         }
     }

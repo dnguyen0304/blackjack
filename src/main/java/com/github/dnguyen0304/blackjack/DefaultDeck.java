@@ -69,11 +69,11 @@ public class DefaultDeck implements Deck {
     }
 
     @Override
-    public void stackOnto(Deck other) {
-        int count = other.getCount();
+    public void stackOnto(Deck base) {
+        int count = this.getCount();
         for (int i = 0; i < count; i++) {
-            Card card = other.draw();
-            this.addToBottom(card);
+            Card card = this.drawFromBottom();
+            base.add(card);
         }
     }
 

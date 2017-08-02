@@ -148,9 +148,10 @@ public class DefaultDeckTest {
     public void testStackOnto() {
         int originalCount = this.cards.size();
         Deque<Card> cards = new ArrayDeque<Card>(this.cards);
-        Deck other = new DefaultDeck(cards);
-        this.deck.stackOnto(other);
-        assertEquals(originalCount * 2, this.deck.getCount());
+        Deck base = new DefaultDeck(cards);
+        this.deck.stackOnto(base);
+        assertEquals(0, this.deck.getCount());
+        assertEquals(originalCount * 2, base.getCount());
     }
 
     @Test
@@ -160,14 +161,14 @@ public class DefaultDeckTest {
         Deque<Card> cards = new ArrayDeque<Card>();
         cards.add(topCard);
         cards.add(bottomCard);
-        Deck other = new DefaultDeck(cards);
+        Deck base = new DefaultDeck(cards);
 
-        this.deck.stackOnto(other);
+        this.deck.stackOnto(base);
 
-        assertEquals(Rank.ACE, this.deck.draw().getRank());
-        assertEquals(Rank.TWO, this.deck.draw().getRank());
-        assertEquals(Rank.THREE, this.deck.draw().getRank());
-        assertEquals(Rank.FOUR, this.deck.draw().getRank());
+        assertEquals(Rank.ACE, base.draw().getRank());
+        assertEquals(Rank.TWO, base.draw().getRank());
+        assertEquals(Rank.THREE, base.draw().getRank());
+        assertEquals(Rank.FOUR, base.draw().getRank());
     }
 
 }
