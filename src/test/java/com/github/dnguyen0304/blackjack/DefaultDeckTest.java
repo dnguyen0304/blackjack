@@ -126,7 +126,7 @@ public class DefaultDeckTest {
     @Test
     public void testDrawWhenEmpty() {
         Deck deck = new DefaultDeck();
-        exception.expect(NoSuchElementException.class);
+        this.exception.expect(NoSuchElementException.class);
         deck.draw();
     }
 
@@ -140,7 +140,7 @@ public class DefaultDeckTest {
     @Test
     public void testDrawFromBottomWhenEmpty() {
         Deck deck = new DefaultDeck();
-        exception.expect(NoSuchElementException.class);
+        this.exception.expect(NoSuchElementException.class);
         deck.drawFromBottom();
     }
 
