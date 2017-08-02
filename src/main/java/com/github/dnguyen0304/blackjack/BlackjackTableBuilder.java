@@ -19,9 +19,9 @@ public class BlackjackTableBuilder {
         return this;
     }
 
-    public Table build() {
+    public BlackjackTable build() {
         this.validate();
-        return new DefaultTable(this.positions);
+        return new DefaultBlackjackTable(new DefaultTable(this.positions));
     }
 
     private void validate() throws IllegalStateException {
