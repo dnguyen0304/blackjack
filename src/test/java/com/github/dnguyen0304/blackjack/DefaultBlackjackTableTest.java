@@ -11,7 +11,7 @@ public class DefaultBlackjackTableTest {
 
     @Test
     public void testAddDealerMultiple() {
-        BlackjackTable table = new BlackjackTableBuilder()
+        BlackjackTable table = new DefaultBlackjackTableBuilder()
             .withPosition(new DefaultPosition())
             .withPosition(new DefaultPosition())
             .build();
