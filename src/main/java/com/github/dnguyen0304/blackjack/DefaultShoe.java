@@ -4,8 +4,13 @@ public class DefaultShoe implements Shoe {
 
     private Deck deck;
 
-    public DefaultShoe(Deck deck) {
-        this.deck = deck;
+    public DefaultShoe() {
+        // Constructing a Deck here is acceptable because it is a value object.
+        this.deck = new DefaultDeck();
+    }
+
+    public void add(Deck deck) {
+        deck.stackOnto(this.deck);
     }
 
     @Override
