@@ -5,20 +5,23 @@ import java.util.List;
 public class DefaultTable implements Table {
 
     private List<Position> positions;
+    private int playerCount;
 
     public DefaultTable(List<Position> positions) {
         this.positions = positions;
+        this.playerCount = 0;
     }
 
     @Override
     public int getPlayerCount() {
-        return this.positions.size();
+        return this.playerCount;
     }
 
     @Override
     public void addPlayer(Player player) throws IllegalStateException {
         Position position = this.nextOpenPosition();
         position.setPlayer(player);
+        this.playerCount++;
     }
 
     private Position nextOpenPosition() throws IllegalStateException {

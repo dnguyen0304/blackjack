@@ -17,6 +17,8 @@ public class DefaultTableTest {
     @Test
     public void testGetPlayerCount() {
         List<Position> positions = new ArrayList<Position>();
+        Position position = new DefaultPosition();
+        positions.add(position);
         Table table = new DefaultTable(positions);
         assertEquals(0, table.getPlayerCount());
     }
@@ -27,8 +29,7 @@ public class DefaultTableTest {
         Position position = new DefaultPosition();
         positions.add(position);
         Table table = new DefaultTable(positions);
-        Player player = new DefaultPlayer(null);
-        table.addPlayer(player);
+        table.addPlayer(null);
         assertEquals(1, table.getPlayerCount());
     }
 
@@ -36,9 +37,8 @@ public class DefaultTableTest {
     public void testAddPlayerNoOpenPositions() {
         List<Position> positions = new ArrayList<Position>();
         Table table = new DefaultTable(positions);
-        Player player = new DefaultPlayer(null);
         this.exception.expect(IllegalStateException.class);
-        table.addPlayer(player);
+        table.addPlayer(null);
     }
 
 }
