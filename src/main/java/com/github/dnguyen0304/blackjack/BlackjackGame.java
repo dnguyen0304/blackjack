@@ -38,4 +38,8 @@ public class BlackjackGame {
         throw new IllegalStateException(message);
     }
 
+    public void play() {
+
+    }
+
 }
