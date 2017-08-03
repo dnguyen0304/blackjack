@@ -1,11 +1,19 @@
 package com.github.dnguyen0304.blackjack;
 
-public interface Position {
+public class Position {
 
-    public Boolean isOpen();
+    private Player player;
 
-    public Player getPlayer();
+    public Boolean isOpen() {
+        return this.player == null;
+    }
 
-    public void setPlayer(Player player);
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
 }

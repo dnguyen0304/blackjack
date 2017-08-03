@@ -17,7 +17,7 @@ public class DefaultGameTest {
     @Test
     public void testGetPlayerCount() {
         List<Position> positions = new ArrayList<Position>();
-        Position position = new DefaultPosition();
+        Position position = new Position();
         positions.add(position);
         Game game = new DefaultGame(positions);
         assertEquals(0, game.getPlayerCount());
@@ -26,7 +26,7 @@ public class DefaultGameTest {
     @Test
     public void testAddPlayer() {
         List<Position> positions = new ArrayList<Position>();
-        Position position = new DefaultPosition();
+        Position position = new Position();
         positions.add(position);
         Game game = new DefaultGame(positions);
         game.addPlayer(null);
