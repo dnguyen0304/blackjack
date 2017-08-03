@@ -5,9 +5,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class DefaultBlackjackTableBuilderTest {
+public class DefaultBlackjackGameBuilderTest {
 
-    private DefaultBlackjackTableBuilder builder;
+    private DefaultBlackjackGameBuilder builder;
     private Position position;
 
     @Rule
@@ -15,12 +15,12 @@ public class DefaultBlackjackTableBuilderTest {
 
     @Before
     public void setUp() {
-        this.builder = new DefaultBlackjackTableBuilder();
+        this.builder = new DefaultBlackjackGameBuilder();
     }
 
     @Test
     public void testBuild() {
-        for (int i = 0; i < DefaultBlackjackTableBuilder.PLAYER_MINIMUM; i++) {
+        for (int i = 0; i < DefaultBlackjackGameBuilder.PLAYER_MINIMUM; i++) {
             this.builder.withPosition(position);
         }
         this.builder.build();
@@ -34,7 +34,7 @@ public class DefaultBlackjackTableBuilderTest {
 
     @Test
     public void testBuildTooManyPositions() {
-        for (int i = 0; i < DefaultBlackjackTableBuilder.PLAYER_MAXIMUM + 1; i++) {
+        for (int i = 0; i < DefaultBlackjackGameBuilder.PLAYER_MAXIMUM + 1; i++) {
             this.builder.withPosition(position);
         }
         this.exception.expect(IllegalStateException.class);
