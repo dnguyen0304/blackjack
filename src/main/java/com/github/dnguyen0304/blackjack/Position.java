@@ -8,8 +8,4 @@ public interface Position {
 
     public void setPlayer(Player player);
 
-    public int getBet();
-
-    public void setBet(int bet);
-
 }
