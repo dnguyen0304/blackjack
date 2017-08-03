@@ -1,7 +1,7 @@
 package com.github.dnguyen0304.blackjack;
 
-public interface Application {
+public class Application {
 
-    public void start();
+    public void start() {}
 
 }
