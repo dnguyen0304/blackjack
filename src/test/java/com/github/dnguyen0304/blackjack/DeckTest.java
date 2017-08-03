@@ -15,7 +15,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class DefaultDeckTest {
+public class DeckTest {
 
     private Card topCard;
     private Card bottomCard;
