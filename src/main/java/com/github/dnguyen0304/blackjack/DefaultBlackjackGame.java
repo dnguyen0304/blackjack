@@ -2,10 +2,10 @@ package com.github.dnguyen0304.blackjack;
 
 public class DefaultBlackjackGame implements BlackjackGame {
 
-    private Table table;
+    private Game table;
     private Player dealer;
 
-    public DefaultBlackjackGame(Table table) {
+    public DefaultBlackjackGame(Game table) {
         this.table = table;
     }
 

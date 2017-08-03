@@ -2,7 +2,7 @@ package com.github.dnguyen0304.blackjack;
 
 import java.util.List;
 
-public class DefaultGame implements Table {
+public class DefaultGame implements Game {
 
     private List<Position> positions;
     private int playerCount;

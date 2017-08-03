@@ -1,6 +1,6 @@
 package com.github.dnguyen0304.blackjack;
 
-public interface Table {
+public interface Game {
 
     public int getPlayerCount();
 
