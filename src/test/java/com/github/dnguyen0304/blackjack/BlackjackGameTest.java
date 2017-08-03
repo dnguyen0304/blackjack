@@ -25,7 +25,7 @@ public class BlackjackGameTest {
 
     @Test
     public void testSetDealer() {
-        BlackjackGame game = new DefaultBlackjackGameBuilder()
+        BlackjackGame game = new BlackjackGameBuilder()
             .withPosition(new Position())
             .withPosition(new Position())
             .build();
