@@ -11,7 +11,7 @@ import org.junit.Test;
 public class StackOntoDeckShuffleStrategyTest {
 
     private DeckShuffler strategy;
-    private List<Card> cards;
+    private List<BlackjackCard> cards;
     private Deck deck;
     private Deck other;
 
@@ -19,17 +19,17 @@ public class StackOntoDeckShuffleStrategyTest {
     public void setUp() {
         this.strategy = DeckShuffleStrategies.stackOnto();
 
-        this.cards = new ArrayList<Card>();
-        this.cards.add(new Card(Rank.FOUR, null));
-        this.cards.add(new Card(Rank.THREE, null));
-        this.cards.add(new Card(Rank.TWO, null));
-        this.cards.add(new Card(Rank.ACE, null));
+        this.cards = new ArrayList<BlackjackCard>();
+        this.cards.add(new BlackjackCard(Rank.FOUR, null));
+        this.cards.add(new BlackjackCard(Rank.THREE, null));
+        this.cards.add(new BlackjackCard(Rank.TWO, null));
+        this.cards.add(new BlackjackCard(Rank.ACE, null));
 
         this.deck = new Deck();
         this.other = new Deck();
 
         for (int i = 0; i < this.cards.size(); i++) {
-            Card card = this.cards.get(i);
+            BlackjackCard card = this.cards.get(i);
             if (i < this.cards.size() / 2) {
                 this.deck.add(card);
             } else {

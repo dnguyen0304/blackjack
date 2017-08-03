@@ -22,15 +22,15 @@ public class CardShuffleStrategies {
         @Override
         public void shuffle(Deck deck) {
             // Create a temporary list where cards will be shuffled.
-            List<Card> list = new ArrayList<Card>();
+            List<BlackjackCard> list = new ArrayList<BlackjackCard>();
             int count = deck.getCount();
             for (int i = 0; i < count; i++) {
-                Card card = deck.draw();
+                BlackjackCard card = deck.draw();
                 list.add(card);
             }
             Collections.shuffle(list, this.random);
             // Add the cards back into the deck.
-            for (Card card : list) {
+            for (BlackjackCard card : list) {
                 deck.add(card);
             }
         }

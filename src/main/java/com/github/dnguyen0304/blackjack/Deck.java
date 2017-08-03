@@ -5,16 +5,16 @@ import java.util.Deque;
 
 public class Deck implements Drawable {
 
-    private Deque<Card> cards;
+    private Deque<BlackjackCard> cards;
 
     // This constructor must be called by all other alternate or overloaded
     // constructors.
-    public Deck(Deque<Card> cards) {
+    public Deck(Deque<BlackjackCard> cards) {
         this.cards = cards;
     }
 
     public Deck() {
-        this(new ArrayDeque<Card>());
+        this(new ArrayDeque<BlackjackCard>());
     }
 
     /**
@@ -24,9 +24,9 @@ public class Deck implements Drawable {
      * @param cards
      * @return
      */
-    public static Deck fromIterable(Iterable<Card> cards) {
+    public static Deck fromIterable(Iterable<BlackjackCard> cards) {
         Deck deck = new Deck();
-        for (Card card : cards) {
+        for (BlackjackCard card : cards) {
             deck.add(card);
         }
         return deck;
@@ -37,7 +37,7 @@ public class Deck implements Drawable {
         for (Suit suit : Suit.values()) {
             for (Rank rank : Rank.values()) {
                 // Should an abstract factory be used here?
-                Card card = new Card(rank, suit);
+                BlackjackCard card = new BlackjackCard(rank, suit);
                 deck.add(card);
             }
         }
@@ -48,27 +48,27 @@ public class Deck implements Drawable {
         return cards.size();
     }
 
-    public void add(Card card) {
+    public void add(BlackjackCard card) {
         this.cards.addFirst(card);
     }
 
-    public void addToBottom(Card card) {
+    public void addToBottom(BlackjackCard card) {
         this.cards.addLast(card);
     }
 
     @Override
-    public Card draw() {
+    public BlackjackCard draw() {
         return cards.removeFirst();
     }
 
-    public Card drawFromBottom() {
+    public BlackjackCard drawFromBottom() {
         return cards.removeLast();
     }
 
     public void stackOnto(Deck base) {
         int count = this.getCount();
         for (int i = 0; i < count; i++) {
-            Card card = this.drawFromBottom();
+            BlackjackCard card = this.drawFromBottom();
             base.add(card);
         }
     }

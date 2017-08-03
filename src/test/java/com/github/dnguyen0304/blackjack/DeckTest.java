@@ -17,9 +17,9 @@ import org.junit.rules.ExpectedException;
 
 public class DeckTest {
 
-    private Card topCard;
-    private Card bottomCard;
-    private Deque<Card> cards;
+    private BlackjackCard topCard;
+    private BlackjackCard bottomCard;
+    private Deque<BlackjackCard> cards;
     private Deck deck;
 
     @Rule
@@ -27,9 +27,9 @@ public class DeckTest {
 
     @Before
     public void setUp() {
-        this.topCard = new Card(Rank.ACE, Suit.SPADES);
-        this.bottomCard = new Card(Rank.TWO, Suit.SPADES);
-        this.cards = new ArrayDeque<Card>();
+        this.topCard = new BlackjackCard(Rank.ACE, Suit.SPADES);
+        this.bottomCard = new BlackjackCard(Rank.TWO, Suit.SPADES);
+        this.cards = new ArrayDeque<BlackjackCard>();
         // This top card must be added to the deque first because the
         // DefaultDeck exhibits LIFO behavior by default. This pattern is
         // specifically for testing. The add method should be preferred
@@ -41,14 +41,14 @@ public class DeckTest {
 
     @Test
     public void testFromIterable() {
-        Iterable<Card> cards = new ArrayList<Card>();
+        Iterable<BlackjackCard> cards = new ArrayList<BlackjackCard>();
         Deck deck = Deck.fromIterable(cards);
         assertEquals(0, deck.getCount());
     }
 
     @Test
     public void testFromIterableIsLifo() {
-        List<Card> cards = new ArrayList<Card>(this.cards);
+        List<BlackjackCard> cards = new ArrayList<BlackjackCard>(this.cards);
         Deck deck = Deck.fromIterable(cards);
 
         for (int i = cards.size() - 1; i > 0; i--) {
@@ -69,7 +69,7 @@ public class DeckTest {
         Deck deck = Deck.standard52();
         try {
             while (true) {
-                Card card = deck.draw();
+                BlackjackCard card = deck.draw();
                 uniqueRanks.add(card.getRank());
             }
         } catch (NoSuchElementException e) {
@@ -84,7 +84,7 @@ public class DeckTest {
         Deck deck = Deck.standard52();
         try {
             while (true) {
-                Card card = deck.draw();
+                BlackjackCard card = deck.draw();
                 uniqueSuits.add(card.getSuit());
             }
         } catch (NoSuchElementException e) {
@@ -101,7 +101,7 @@ public class DeckTest {
     @Test
     public void testAdd() {
         int originalCount = this.deck.getCount();
-        Card card = new Card(Rank.ACE, null);
+        BlackjackCard card = new BlackjackCard(Rank.ACE, null);
         this.deck.add(card);
         assertEquals(originalCount + 1, this.deck.getCount());
         assertEquals(card.getRank(), this.deck.draw().getRank());
@@ -110,7 +110,7 @@ public class DeckTest {
     @Test
     public void testAddToBottom() {
         int originalCount = this.deck.getCount();
-        Card card = new Card(Rank.ACE, null);
+        BlackjackCard card = new BlackjackCard(Rank.ACE, null);
         this.deck.addToBottom(card);
         assertEquals(originalCount + 1, this.deck.getCount());
         assertEquals(card.getRank(), this.deck.drawFromBottom().getRank());
@@ -118,7 +118,7 @@ public class DeckTest {
 
     @Test
     public void testDraw() {
-        Card card = deck.draw();
+        BlackjackCard card = deck.draw();
         assertEquals(this.topCard.getRank(), card.getRank());
         assertEquals(this.topCard.getSuit(), card.getSuit());
     }
@@ -132,7 +132,7 @@ public class DeckTest {
 
     @Test
     public void testDrawFromBottom() {
-        Card card = deck.drawFromBottom();
+        BlackjackCard card = deck.drawFromBottom();
         assertEquals(this.bottomCard.getRank(), card.getRank());
         assertEquals(this.bottomCard.getSuit(), card.getSuit());
     }
@@ -147,7 +147,7 @@ public class DeckTest {
     @Test
     public void testStackOnto() {
         int originalCount = this.cards.size();
-        Deque<Card> cards = new ArrayDeque<Card>(this.cards);
+        Deque<BlackjackCard> cards = new ArrayDeque<BlackjackCard>(this.cards);
         Deck base = new Deck(cards);
         this.deck.stackOnto(base);
         assertEquals(0, this.deck.getCount());
@@ -156,9 +156,9 @@ public class DeckTest {
 
     @Test
     public void testStackOntoIsOrdered() {
-        Card topCard = new Card(Rank.THREE, null);
-        Card bottomCard = new Card(Rank.FOUR, null);
-        Deque<Card> cards = new ArrayDeque<Card>();
+        BlackjackCard topCard = new BlackjackCard(Rank.THREE, null);
+        BlackjackCard bottomCard = new BlackjackCard(Rank.FOUR, null);
+        Deque<BlackjackCard> cards = new ArrayDeque<BlackjackCard>();
         cards.add(topCard);
         cards.add(bottomCard);
         Deck base = new Deck(cards);

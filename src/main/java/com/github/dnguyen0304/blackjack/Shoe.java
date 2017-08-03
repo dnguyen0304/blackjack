@@ -15,8 +15,8 @@ public class Shoe implements Drawable {
     }
 
     @Override
-    public Card draw() {
-        Card card = this.deck.draw();
+    public BlackjackCard draw() {
+        BlackjackCard card = this.deck.draw();
         return card;
     }
 
