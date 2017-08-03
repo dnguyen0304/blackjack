@@ -21,7 +21,7 @@ public class DefaultBlackjackGameBuilder {
 
     public BlackjackGame build() {
         this.validate();
-        return new DefaultBlackjackGame(new DefaultGame(this.positions));
+        return new BlackjackGame(this.positions);
     }
 
     private void validate() throws IllegalStateException {
