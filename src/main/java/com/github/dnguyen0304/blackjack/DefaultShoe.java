@@ -6,7 +6,7 @@ public class DefaultShoe implements Drawable, Shoe {
 
     public DefaultShoe() {
         // Constructing a Deck here is acceptable because it is a value object.
-        this.deck = new DefaultDeck();
+        this.deck = new Deck();
     }
 
     @Override

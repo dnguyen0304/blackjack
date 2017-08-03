@@ -36,20 +36,20 @@ public class DefaultDeckTest {
         // otherwise.
         this.cards.add(this.topCard);
         this.cards.add(this.bottomCard);
-        this.deck = new DefaultDeck(this.cards);
+        this.deck = new Deck(this.cards);
     }
 
     @Test
     public void testFromIterable() {
         Iterable<Card> cards = new ArrayList<Card>();
-        Deck deck = DefaultDeck.fromIterable(cards);
+        Deck deck = Deck.fromIterable(cards);
         assertEquals(0, deck.getCount());
     }
 
     @Test
     public void testFromIterableIsLifo() {
         List<Card> cards = new ArrayList<Card>(this.cards);
-        Deck deck = DefaultDeck.fromIterable(cards);
+        Deck deck = Deck.fromIterable(cards);
 
         for (int i = cards.size() - 1; i > 0; i--) {
             assertEquals(cards.get(i).getRank(), deck.draw().getRank());
@@ -59,14 +59,14 @@ public class DefaultDeckTest {
     @Test
     public void testStandard52Count() {
         int expectedCount = Rank.values().length * Suit.values().length;
-        Deck deck = DefaultDeck.standard52();
+        Deck deck = Deck.standard52();
         assertEquals(expectedCount, deck.getCount());
     }
 
     @Test
     public void testStandard52UniqueRankCount() {
         Set<Rank> uniqueRanks = new HashSet<Rank>();
-        Deck deck = DefaultDeck.standard52();
+        Deck deck = Deck.standard52();
         try {
             while (true) {
                 Card card = deck.draw();
@@ -81,7 +81,7 @@ public class DefaultDeckTest {
     @Test
     public void testStandard52UniqueSuitCount() {
         Set<Suit> uniqueSuits = new HashSet<Suit>();
-        Deck deck = DefaultDeck.standard52();
+        Deck deck = Deck.standard52();
         try {
             while (true) {
                 Card card = deck.draw();
@@ -125,7 +125,7 @@ public class DefaultDeckTest {
 
     @Test
     public void testDrawWhenEmpty() {
-        Deck deck = new DefaultDeck();
+        Deck deck = new Deck();
         this.exception.expect(NoSuchElementException.class);
         deck.draw();
     }
@@ -139,7 +139,7 @@ public class DefaultDeckTest {
 
     @Test
     public void testDrawFromBottomWhenEmpty() {
-        Deck deck = new DefaultDeck();
+        Deck deck = new Deck();
         this.exception.expect(NoSuchElementException.class);
         deck.drawFromBottom();
     }
@@ -148,7 +148,7 @@ public class DefaultDeckTest {
     public void testStackOnto() {
         int originalCount = this.cards.size();
         Deque<Card> cards = new ArrayDeque<Card>(this.cards);
-        Deck base = new DefaultDeck(cards);
+        Deck base = new Deck(cards);
         this.deck.stackOnto(base);
         assertEquals(0, this.deck.getCount());
         assertEquals(originalCount * 2, base.getCount());
@@ -161,7 +161,7 @@ public class DefaultDeckTest {
         Deque<Card> cards = new ArrayDeque<Card>();
         cards.add(topCard);
         cards.add(bottomCard);
-        Deck base = new DefaultDeck(cards);
+        Deck base = new Deck(cards);
 
         this.deck.stackOnto(base);
 

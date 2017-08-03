@@ -25,8 +25,8 @@ public class StackOntoDeckShuffleStrategyTest {
         this.cards.add(new Card(Rank.TWO, null));
         this.cards.add(new Card(Rank.ACE, null));
 
-        this.deck = new DefaultDeck();
-        this.other = new DefaultDeck();
+        this.deck = new Deck();
+        this.other = new Deck();
 
         for (int i = 0; i < this.cards.size(); i++) {
             Card card = this.cards.get(i);
