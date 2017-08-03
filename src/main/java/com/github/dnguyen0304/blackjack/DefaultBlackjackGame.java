@@ -1,11 +1,11 @@
 package com.github.dnguyen0304.blackjack;
 
-public class DefaultBlackjackTable implements BlackjackTable {
+public class DefaultBlackjackGame implements BlackjackTable {
 
     private Table table;
     private Player dealer;
 
-    public DefaultBlackjackTable(Table table) {
+    public DefaultBlackjackGame(Table table) {
         this.table = table;
     }
 
