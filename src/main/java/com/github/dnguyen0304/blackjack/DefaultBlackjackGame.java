@@ -1,6 +1,6 @@
 package com.github.dnguyen0304.blackjack;
 
-public class DefaultBlackjackGame implements BlackjackTable {
+public class DefaultBlackjackGame implements BlackjackGame {
 
     private Table table;
     private Player dealer;

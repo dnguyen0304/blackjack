@@ -19,7 +19,7 @@ public class DefaultBlackjackGameBuilder {
         return this;
     }
 
-    public BlackjackTable build() {
+    public BlackjackGame build() {
         this.validate();
         return new DefaultBlackjackGame(new DefaultTable(this.positions));
     }
