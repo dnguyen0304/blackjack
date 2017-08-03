@@ -36,7 +36,7 @@ public class DefaultDeck implements Deck {
         Deck deck = new DefaultDeck();
         for (Suit suit : Suit.values()) {
             for (Rank rank : Rank.values()) {
-                Card card = new DefaultCard(rank, suit);
+                Card card = new Card(rank, suit);
                 deck.add(card);
             }
         }

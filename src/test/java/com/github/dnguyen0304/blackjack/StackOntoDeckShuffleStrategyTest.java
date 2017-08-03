@@ -20,10 +20,10 @@ public class StackOntoDeckShuffleStrategyTest {
         this.strategy = DeckShuffleStrategies.stackOnto();
 
         this.cards = new ArrayList<Card>();
-        this.cards.add(new DefaultCard(Rank.FOUR, null));
-        this.cards.add(new DefaultCard(Rank.THREE, null));
-        this.cards.add(new DefaultCard(Rank.TWO, null));
-        this.cards.add(new DefaultCard(Rank.ACE, null));
+        this.cards.add(new Card(Rank.FOUR, null));
+        this.cards.add(new Card(Rank.THREE, null));
+        this.cards.add(new Card(Rank.TWO, null));
+        this.cards.add(new Card(Rank.ACE, null));
 
         this.deck = new DefaultDeck();
         this.other = new DefaultDeck();

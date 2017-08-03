@@ -1,9 +1,21 @@
 package com.github.dnguyen0304.blackjack;
 
-public interface Card {
+public class Card {
 
-    public Rank getRank();
+    private final Rank rank;
+    private final Suit suit;
 
-    public Suit getSuit();
+    public Card(Rank rank, Suit suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public Suit getSuit() {
+        return suit;
+    }
 
 }

@@ -27,8 +27,8 @@ public class DefaultDeckTest {
 
     @Before
     public void setUp() {
-        this.topCard = new DefaultCard(Rank.ACE, Suit.SPADES);
-        this.bottomCard = new DefaultCard(Rank.TWO, Suit.SPADES);
+        this.topCard = new Card(Rank.ACE, Suit.SPADES);
+        this.bottomCard = new Card(Rank.TWO, Suit.SPADES);
         this.cards = new ArrayDeque<Card>();
         // This top card must be added to the deque first because the
         // DefaultDeck exhibits LIFO behavior by default. This pattern is
@@ -101,7 +101,7 @@ public class DefaultDeckTest {
     @Test
     public void testAdd() {
         int originalCount = this.deck.getCount();
-        Card card = new DefaultCard(Rank.ACE, null);
+        Card card = new Card(Rank.ACE, null);
         this.deck.add(card);
         assertEquals(originalCount + 1, this.deck.getCount());
         assertEquals(card.getRank(), this.deck.draw().getRank());
@@ -110,7 +110,7 @@ public class DefaultDeckTest {
     @Test
     public void testAddToBottom() {
         int originalCount = this.deck.getCount();
-        Card card = new DefaultCard(Rank.ACE, null);
+        Card card = new Card(Rank.ACE, null);
         this.deck.addToBottom(card);
         assertEquals(originalCount + 1, this.deck.getCount());
         assertEquals(card.getRank(), this.deck.drawFromBottom().getRank());
@@ -156,8 +156,8 @@ public class DefaultDeckTest {
 
     @Test
     public void testStackOntoIsOrdered() {
-        Card topCard = new DefaultCard(Rank.THREE, null);
-        Card bottomCard = new DefaultCard(Rank.FOUR, null);
+        Card topCard = new Card(Rank.THREE, null);
+        Card bottomCard = new Card(Rank.FOUR, null);
         Deque<Card> cards = new ArrayDeque<Card>();
         cards.add(topCard);
         cards.add(bottomCard);
