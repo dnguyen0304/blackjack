@@ -10,6 +10,7 @@ package com.github.dnguyen0304.blackjack;
  */
 public interface CardShuffler {
 
+    // Should this specify a return value?
     public void shuffle(Deck deck);
 
 }
