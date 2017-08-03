@@ -27,7 +27,7 @@ public class DefaultBlackjackGameTest {
     @Test
     public void testSetDealerNoOpenPositions() {
         List<Position> positions = new ArrayList<Position>();
-        Table game = new DefaultTable(positions);
+        Table game = new DefaultGame(positions);
         this.exception.expect(IllegalStateException.class);
         game.addPlayer(null);
     }

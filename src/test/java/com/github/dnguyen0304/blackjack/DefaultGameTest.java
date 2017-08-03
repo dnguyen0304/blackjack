@@ -9,7 +9,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class DefaultTableTest {
+public class DefaultGameTest {
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
@@ -19,7 +19,7 @@ public class DefaultTableTest {
         List<Position> positions = new ArrayList<Position>();
         Position position = new DefaultPosition();
         positions.add(position);
-        Table table = new DefaultTable(positions);
+        Table table = new DefaultGame(positions);
         assertEquals(0, table.getPlayerCount());
     }
 
@@ -28,7 +28,7 @@ public class DefaultTableTest {
         List<Position> positions = new ArrayList<Position>();
         Position position = new DefaultPosition();
         positions.add(position);
-        Table table = new DefaultTable(positions);
+        Table table = new DefaultGame(positions);
         table.addPlayer(null);
         assertEquals(1, table.getPlayerCount());
     }
@@ -36,7 +36,7 @@ public class DefaultTableTest {
     @Test
     public void testAddPlayerNoOpenPositions() {
         List<Position> positions = new ArrayList<Position>();
-        Table table = new DefaultTable(positions);
+        Table table = new DefaultGame(positions);
         this.exception.expect(IllegalStateException.class);
         table.addPlayer(null);
     }

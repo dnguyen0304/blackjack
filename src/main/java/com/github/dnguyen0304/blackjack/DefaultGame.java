@@ -2,12 +2,12 @@ package com.github.dnguyen0304.blackjack;
 
 import java.util.List;
 
-public class DefaultTable implements Table {
+public class DefaultGame implements Table {
 
     private List<Position> positions;
     private int playerCount;
 
-    public DefaultTable(List<Position> positions) {
+    public DefaultGame(List<Position> positions) {
         this.positions = positions;
         this.playerCount = 0;
     }
