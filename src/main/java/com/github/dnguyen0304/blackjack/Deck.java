@@ -36,7 +36,7 @@ public class Deck implements Drawable {
         Deck deck = new Deck();
         for (Suit suit : Suit.values()) {
             for (Rank rank : Rank.values()) {
-                // A factory should be used here.
+                // Should an abstract factory be used here?
                 Card card = new Card(rank, suit);
                 deck.add(card);
             }
