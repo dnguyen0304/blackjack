@@ -19,8 +19,8 @@ public class DefaultGameTest {
         List<Position> positions = new ArrayList<Position>();
         Position position = new DefaultPosition();
         positions.add(position);
-        Game table = new DefaultGame(positions);
-        assertEquals(0, table.getPlayerCount());
+        Game game = new DefaultGame(positions);
+        assertEquals(0, game.getPlayerCount());
     }
 
     @Test
@@ -28,17 +28,17 @@ public class DefaultGameTest {
         List<Position> positions = new ArrayList<Position>();
         Position position = new DefaultPosition();
         positions.add(position);
-        Game table = new DefaultGame(positions);
-        table.addPlayer(null);
-        assertEquals(1, table.getPlayerCount());
+        Game game = new DefaultGame(positions);
+        game.addPlayer(null);
+        assertEquals(1, game.getPlayerCount());
     }
 
     @Test
     public void testAddPlayerNoOpenPositions() {
         List<Position> positions = new ArrayList<Position>();
-        Game table = new DefaultGame(positions);
+        Game game = new DefaultGame(positions);
         this.exception.expect(IllegalStateException.class);
-        table.addPlayer(null);
+        game.addPlayer(null);
     }
 
 }

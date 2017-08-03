@@ -30,7 +30,7 @@ public class DefaultGame implements Game {
                 return position;
             }
         }
-        String message = "This table is full.";
+        String message = "This game is full.";
         throw new IllegalStateException(message);
     }
 

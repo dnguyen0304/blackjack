@@ -2,16 +2,16 @@ package com.github.dnguyen0304.blackjack;
 
 public class DefaultBlackjackGame implements BlackjackGame {
 
-    private Game table;
+    private Game game;
     private Player dealer;
 
-    public DefaultBlackjackGame(Game table) {
-        this.table = table;
+    public DefaultBlackjackGame(Game game) {
+        this.game = game;
     }
 
     @Override
     public int getPlayerCount() {
-        return this.table.getPlayerCount();
+        return this.game.getPlayerCount();
     }
 
     @Override
@@ -22,7 +22,7 @@ public class DefaultBlackjackGame implements BlackjackGame {
 
     @Override
     public void addPlayer(Player player) throws IllegalStateException {
-        this.table.addPlayer(player);
+        this.game.addPlayer(player);
     }
 
 }
