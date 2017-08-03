@@ -1,10 +1,24 @@
 package com.github.dnguyen0304.blackjack;
 
-public interface Shuffler {
+public class Shuffler implements CardShuffler, DeckShuffler {
 
-    // Should this specify a return value?
-    public void shuffle(Deck deck);
+    private CardShuffler cardShuffler;
+    private DeckShuffler deckShuffler;
 
-    public Deck shuffle(Deck... decks);
+    public Shuffler(CardShuffler cardShuffler, DeckShuffler deckShuffler) {
+        this.cardShuffler = cardShuffler;
+        this.deckShuffler = deckShuffler;
+    }
+
+    @Override
+    public void shuffle(Deck deck) {
+        this.cardShuffler.shuffle(deck);
+    }
+
+    @Override
+    public Deck shuffle(Deck... decks) {
+        Deck shuffledDeck = this.deckShuffler.shuffle(decks);
+        return shuffledDeck;
+    }
 
 }
