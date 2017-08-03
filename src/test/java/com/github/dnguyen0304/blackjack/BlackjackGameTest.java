@@ -9,7 +9,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class DefaultBlackjackGameTest {
+public class BlackjackGameTest {
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
