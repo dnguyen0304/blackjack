@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class CardShuffleStrategies {
 
-    public static CardShuffleStrategy collections(Random random) {
+    public static CardShuffler collections(Random random) {
         return new CollectionsCardShuffleStrategy(random);
     }
 
-    private static class CollectionsCardShuffleStrategy implements CardShuffleStrategy {
+    private static class CollectionsCardShuffleStrategy implements CardShuffler {
 
         private Random random;
 

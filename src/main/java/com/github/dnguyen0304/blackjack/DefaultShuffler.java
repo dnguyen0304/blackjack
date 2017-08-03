@@ -2,17 +2,17 @@ package com.github.dnguyen0304.blackjack;
 
 public class DefaultShuffler implements Shuffler {
 
-    private CardShuffleStrategy cardShuffleStrategy;
+    private CardShuffler cardShuffler;
     private DeckShuffler deckShuffler;
 
-    public DefaultShuffler(CardShuffleStrategy cardShuffleStrategy, DeckShuffler deckShuffler) {
-        this.cardShuffleStrategy = cardShuffleStrategy;
+    public DefaultShuffler(CardShuffler cardShuffler, DeckShuffler deckShuffler) {
+        this.cardShuffler = cardShuffler;
         this.deckShuffler = deckShuffler;
     }
 
     @Override
     public void shuffle(Deck deck) {
-        this.cardShuffleStrategy.shuffle(deck);
+        this.cardShuffler.shuffle(deck);
     }
 
     @Override
