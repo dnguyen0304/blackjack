@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class StackOntoDeckShuffleStrategyTest {
 
-    private DeckShuffleStrategy strategy;
+    private DeckShuffler strategy;
     private List<Card> cards;
     private Deck deck;
     private Deck other;

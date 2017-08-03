@@ -2,11 +2,11 @@ package com.github.dnguyen0304.blackjack;
 
 public class DeckShuffleStrategies {
 
-    public static DeckShuffleStrategy stackOnto() {
+    public static DeckShuffler stackOnto() {
         return new StackOntoDeckShuffleStrategy();
     }
 
-    private static class StackOntoDeckShuffleStrategy implements DeckShuffleStrategy {
+    private static class StackOntoDeckShuffleStrategy implements DeckShuffler {
 
         @Override
         public Deck shuffle(Deck... decks) {

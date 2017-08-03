@@ -6,7 +6,7 @@ package com.github.dnguyen0304.blackjack;
  * @author Duy Nguyen
  * @see CardShuffleStrategy
  */
-public interface DeckShuffleStrategy {
+public interface DeckShuffler {
 
     public Deck shuffle(Deck... decks);
 

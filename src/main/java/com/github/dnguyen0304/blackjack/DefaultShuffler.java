@@ -3,11 +3,11 @@ package com.github.dnguyen0304.blackjack;
 public class DefaultShuffler implements Shuffler {
 
     private CardShuffleStrategy cardShuffleStrategy;
-    private DeckShuffleStrategy deckShuffleStrategy;
+    private DeckShuffler deckShuffler;
 
-    public DefaultShuffler(CardShuffleStrategy cardShuffleStrategy, DeckShuffleStrategy deckShuffleStrategy) {
+    public DefaultShuffler(CardShuffleStrategy cardShuffleStrategy, DeckShuffler deckShuffler) {
         this.cardShuffleStrategy = cardShuffleStrategy;
-        this.deckShuffleStrategy = deckShuffleStrategy;
+        this.deckShuffler = deckShuffler;
     }
 
     @Override
@@ -17,7 +17,7 @@ public class DefaultShuffler implements Shuffler {
 
     @Override
     public Deck shuffle(Deck... decks) {
-        Deck shuffledDeck = this.deckShuffleStrategy.shuffle(decks);
+        Deck shuffledDeck = this.deckShuffler.shuffle(decks);
         return shuffledDeck;
     }
 
