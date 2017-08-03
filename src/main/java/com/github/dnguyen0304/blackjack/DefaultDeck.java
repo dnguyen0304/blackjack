@@ -36,6 +36,7 @@ public class DefaultDeck implements Deck {
         Deck deck = new DefaultDeck();
         for (Suit suit : Suit.values()) {
             for (Rank rank : Rank.values()) {
+                // A factory should be used here.
                 Card card = new Card(rank, suit);
                 deck.add(card);
             }
