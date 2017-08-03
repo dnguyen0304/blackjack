@@ -1,11 +1,25 @@
 package com.github.dnguyen0304.blackjack;
 
-public interface Player {
+public class Player {
 
-    public String getName();
+    private String name;
+    private int chipTotal;
 
-    public int getChipTotal();
+    public Player(String name) {
+        this.name = name;
+        this.chipTotal = 0;
+    }
 
-    public void setChipTotal(int chipTotal);
+    public String getName() {
+        return this.name;
+    }
+
+    public int getChipTotal() {
+        return this.chipTotal;
+    }
+
+    public void setChipTotal(int chipTotal) {
+        this.chipTotal = chipTotal;
+    }
 
 }
