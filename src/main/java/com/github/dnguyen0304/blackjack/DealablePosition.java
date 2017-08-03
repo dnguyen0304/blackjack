@@ -1,6 +1,6 @@
 package com.github.dnguyen0304.blackjack;
 
-public class Position {
+public class DealablePosition {
 
     private Player player;
 

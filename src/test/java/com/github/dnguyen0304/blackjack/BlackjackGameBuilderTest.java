@@ -8,7 +8,7 @@ import org.junit.rules.ExpectedException;
 public class BlackjackGameBuilderTest {
 
     private BlackjackGameBuilder builder;
-    private Position position;
+    private DealablePosition position;
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();

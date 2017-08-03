@@ -4,11 +4,11 @@ import java.util.List;
 
 public class BlackjackGame {
 
-    private List<Position> positions;
+    private List<DealablePosition> positions;
     private int playerCount;
     private Player dealer;
 
-    public BlackjackGame(List<Position> positions) {
+    public BlackjackGame(List<DealablePosition> positions) {
         this.positions = positions;
         this.playerCount = 0;
     }
@@ -23,13 +23,13 @@ public class BlackjackGame {
     }
 
     public void addPlayer(Player player) throws IllegalStateException {
-        Position position = this.nextOpenPosition();
+        DealablePosition position = this.nextOpenPosition();
         position.setPlayer(player);
         this.playerCount++;
     }
 
-    private Position nextOpenPosition() throws IllegalStateException {
-        for (Position position : this.positions) {
+    private DealablePosition nextOpenPosition() throws IllegalStateException {
+        for (DealablePosition position : this.positions) {
             if (position.isOpen()) {
                 return position;
             }

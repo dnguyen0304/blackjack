@@ -8,13 +8,13 @@ public class BlackjackGameBuilder {
     public static final int PLAYER_MINIMUM = 2;
     public static final int PLAYER_MAXIMUM = 6;
 
-    private List<Position> positions;
+    private List<DealablePosition> positions;
 
     public BlackjackGameBuilder() {
-        this.positions = new ArrayList<Position>();
+        this.positions = new ArrayList<DealablePosition>();
     }
 
-    public BlackjackGameBuilder withPosition(Position position) {
+    public BlackjackGameBuilder withPosition(DealablePosition position) {
         this.positions.add(position);
         return this;
     }

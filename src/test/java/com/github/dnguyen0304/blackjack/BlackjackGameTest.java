@@ -16,8 +16,8 @@ public class BlackjackGameTest {
 
     @Test
     public void testGetPlayerCount() {
-        List<Position> positions = new ArrayList<Position>();
-        Position position = new Position();
+        List<DealablePosition> positions = new ArrayList<DealablePosition>();
+        DealablePosition position = new DealablePosition();
         positions.add(position);
         BlackjackGame game = new BlackjackGame(positions);
         assertEquals(0, game.getPlayerCount());
@@ -26,8 +26,8 @@ public class BlackjackGameTest {
     @Test
     public void testSetDealer() {
         BlackjackGame game = new BlackjackGameBuilder()
-            .withPosition(new Position())
-            .withPosition(new Position())
+            .withPosition(new DealablePosition())
+            .withPosition(new DealablePosition())
             .build();
         game.setDealer(null);
         assertEquals(1, game.getPlayerCount());
@@ -35,7 +35,7 @@ public class BlackjackGameTest {
 
     @Test
     public void testSetDealerNoOpenPositions() {
-        List<Position> positions = new ArrayList<Position>();
+        List<DealablePosition> positions = new ArrayList<DealablePosition>();
         BlackjackGame game = new BlackjackGame(positions);
         this.exception.expect(IllegalStateException.class);
         game.addPlayer(null);
@@ -43,8 +43,8 @@ public class BlackjackGameTest {
 
     @Test
     public void testAddPlayer() {
-        List<Position> positions = new ArrayList<Position>();
-        Position position = new Position();
+        List<DealablePosition> positions = new ArrayList<DealablePosition>();
+        DealablePosition position = new DealablePosition();
         positions.add(position);
         BlackjackGame game = new BlackjackGame(positions);
         game.addPlayer(null);
@@ -53,7 +53,7 @@ public class BlackjackGameTest {
 
     @Test
     public void testAddPlayerNoOpenPositions() {
-        List<Position> positions = new ArrayList<Position>();
+        List<DealablePosition> positions = new ArrayList<DealablePosition>();
         BlackjackGame game = new BlackjackGame(positions);
         this.exception.expect(IllegalStateException.class);
         game.addPlayer(null);
