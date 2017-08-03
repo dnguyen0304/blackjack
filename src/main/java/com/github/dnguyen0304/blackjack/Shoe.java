@@ -1,7 +1,23 @@
 package com.github.dnguyen0304.blackjack;
 
-public interface Shoe {
+public class Shoe implements Drawable {
 
-    public void add(Deck deck);
+    private Deck deck;
+
+    public Shoe() {
+        // Constructing a Deck here is acceptable because it is a value object.
+        // Should an abstract factory be used here?
+        this.deck = new Deck();
+    }
+
+    public void add(Deck deck) {
+        deck.stackOnto(this.deck);
+    }
+
+    @Override
+    public Card draw() {
+        Card card = this.deck.draw();
+        return card;
+    }
 
 }
