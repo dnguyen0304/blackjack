@@ -16,20 +16,20 @@ public class DefaultBlackjackTableTest {
 
     @Test
     public void testSetDealer() {
-        BlackjackTable table = new DefaultBlackjackTableBuilder()
+        BlackjackTable game = new DefaultBlackjackTableBuilder()
             .withPosition(new DefaultPosition())
             .withPosition(new DefaultPosition())
             .build();
-        table.setDealer(null);
-        assertEquals(1, table.getPlayerCount());
+        game.setDealer(null);
+        assertEquals(1, game.getPlayerCount());
     }
 
     @Test
     public void testSetDealerNoOpenPositions() {
         List<Position> positions = new ArrayList<Position>();
-        Table table = new DefaultTable(positions);
+        Table game = new DefaultTable(positions);
         this.exception.expect(IllegalStateException.class);
-        table.addPlayer(null);
+        game.addPlayer(null);
     }
 
 }
