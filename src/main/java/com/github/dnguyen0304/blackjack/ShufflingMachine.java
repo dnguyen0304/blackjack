@@ -1,11 +1,11 @@
 package com.github.dnguyen0304.blackjack;
 
-public class Shuffler implements CardShuffler, DeckShuffler {
+public class ShufflingMachine implements CardShuffler, DeckShuffler {
 
     private CardShuffler cardShuffler;
     private DeckShuffler deckShuffler;
 
-    public Shuffler(CardShuffler cardShuffler, DeckShuffler deckShuffler) {
+    public ShufflingMachine(CardShuffler cardShuffler, DeckShuffler deckShuffler) {
         this.cardShuffler = cardShuffler;
         this.deckShuffler = deckShuffler;
     }
