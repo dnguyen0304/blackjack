@@ -1,6 +1,6 @@
 package com.github.dnguyen0304.blackjack;
 
-public class BlackjackDealer implements Player, Drawable {
+public class BlackjackDealer implements Dealer {
 
     private Player player;
     private Drawable deck;
