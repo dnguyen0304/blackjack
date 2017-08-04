@@ -18,12 +18,20 @@ public class ApplicationFactory {
 
         // Create the players.
         for (String name : this.args) {
-            Player player = new Player(name);
+            Player player = new GamePlayer(name);
             builder.withPlayer(player);
         }
 
+        // Create the deck(s).
+        Deck deck = Deck.standard52();
+        for (int i = 0; i < ApplicationFactory.DECK_COUNT - 1; i++) {
+            Deck other = Deck.standard52();
+            other.stackOnto(deck);
+        }
+
         // Create the dealer.
-        Player dealer = new Player(ApplicationFactory.DEALER_NAME);
+        Player player = new GamePlayer(ApplicationFactory.DEALER_NAME);
+        Player dealer = new DealingPlayer(player, deck);
         builder.withPlayer(dealer);
 
         // Create the game.
