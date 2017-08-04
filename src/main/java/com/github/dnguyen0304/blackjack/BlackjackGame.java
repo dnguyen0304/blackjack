@@ -5,37 +5,21 @@ import java.util.List;
 public class BlackjackGame {
 
     private List<DealablePosition> positions;
-    private int playerCount;
     private Player dealer;
 
-    public BlackjackGame(List<DealablePosition> positions) {
+    public BlackjackGame(List<DealablePosition> positions, Player dealer) {
         this.positions = positions;
-        this.playerCount = 0;
-    }
-
-    public int getPlayerCount() {
-        return this.playerCount;
-    }
-
-    public void setDealer(Player dealer) {
-        this.addPlayer(dealer);
         this.dealer = dealer;
     }
 
-    public void addPlayer(Player player) throws IllegalStateException {
-        DealablePosition position = this.nextOpenPosition();
-        position.setPlayer(player);
-        this.playerCount++;
-    }
-
-    private DealablePosition nextOpenPosition() throws IllegalStateException {
+    public int countPlayers() {
+        int count = 0;
         for (DealablePosition position : this.positions) {
-            if (position.isOpen()) {
-                return position;
+            if (!position.isOpen()) {
+                count += 1;
             }
         }
-        String message = "This game is full.";
-        throw new IllegalStateException(message);
+        return count;
     }
 
     public void play() {
