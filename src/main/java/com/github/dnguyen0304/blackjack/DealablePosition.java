@@ -21,6 +21,10 @@ public class DealablePosition implements Comparable<DealablePosition> {
         return this.player == null;
     }
 
+    public void addToHand(BlackjackCard card) {
+        this.hand.add(card);
+    }
+
     @Override
     public int compareTo(DealablePosition other) {
         // How can this access other instances' private fields?
