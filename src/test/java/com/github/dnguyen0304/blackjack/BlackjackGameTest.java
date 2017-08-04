@@ -13,7 +13,7 @@ public class BlackjackGameTest {
     @Before
     public void setUp() {
         this.builder = new BlackjackGameBuilder(new DealablePositionFactory());
-        this.player = new Player(null);
+        this.player = new GamePlayer(null);
     }
 
     @Test
