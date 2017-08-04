@@ -6,7 +6,6 @@ package com.github.dnguyen0304.blackjack;
  * Decks are shuffled in-place.
  *
  * @author Duy Nguyen
- * @see DeckShuffler
  */
 public interface CardShuffler {
 
