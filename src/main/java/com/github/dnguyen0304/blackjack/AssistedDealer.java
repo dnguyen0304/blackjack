@@ -3,11 +3,11 @@ package com.github.dnguyen0304.blackjack;
 public class AssistedDealer implements Dealer {
 
     private Dealer dealer;
-    private ShufflingMachine shuffler;
+    private ShufflingMachine shufflingMachine;
 
-    public AssistedDealer(Dealer dealer, ShufflingMachine shuffler) {
+    public AssistedDealer(Dealer dealer, ShufflingMachine shufflingMachine) {
         this.dealer = dealer;
-        this.shuffler = shuffler;
+        this.shufflingMachine = shufflingMachine;
     }
 
     @Override
