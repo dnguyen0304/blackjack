@@ -3,6 +3,7 @@ package com.github.dnguyen0304.blackjack;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class CardShuffleStrategies {
@@ -20,19 +21,18 @@ public class CardShuffleStrategies {
         }
 
         @Override
-        public void shuffle(Deck deck) {
-            // Create a temporary list where cards will be shuffled.
+        public Deck shuffle(Drawable cards) {
             List<BlackjackCard> list = new ArrayList<BlackjackCard>();
-            int count = deck.getCount();
-            for (int i = 0; i < count; i++) {
-                BlackjackCard card = deck.draw();
+            try {
+                BlackjackCard card = cards.draw();
                 list.add(card);
+            } catch (NoSuchElementException e) {
+                // Don't do anything.
             }
             Collections.shuffle(list, this.random);
-            // Add the cards back into the deck.
-            for (BlackjackCard card : list) {
-                deck.add(card);
-            }
+            // TODO Change this to use a factory.
+            Deck deck = Deck.fromIterable(list);
+            return deck;
         }
 
     }
