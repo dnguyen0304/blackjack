@@ -5,10 +5,10 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ DefaultBlackjackTableBuilderTest.class,
-                DefaultBlackjackTableTest.class,
-                DefaultDeckTest.class,
-                DefaultTableTest.class,
+@SuiteClasses({ BlackjackGameBuilderTest.class,
+                BlackjackGameTest.class,
+                BlackjackHandTest.class,
+                DeckTest.class,
                 StackOntoDeckShuffleStrategyTest.class })
 public class Test {
 
