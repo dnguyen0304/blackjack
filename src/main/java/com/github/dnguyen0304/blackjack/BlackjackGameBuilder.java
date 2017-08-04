@@ -10,7 +10,7 @@ public class BlackjackGameBuilder {
 
     private DealablePositionFactory positionFactory;
     private List<DealablePosition> positions;
-    private Player dealer;
+    private Dealer dealer;
 
     /**
      * This constructor must be called by all other alternate or overloaded
@@ -37,7 +37,7 @@ public class BlackjackGameBuilder {
     }
 
     // TODO Define a build step.
-    public void withDealer(Player dealer) {
+    public void withDealer(Dealer dealer) {
         this.withPlayer(dealer);
         this.dealer = dealer;
     }

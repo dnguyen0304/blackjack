@@ -5,9 +5,9 @@ import java.util.List;
 public class BlackjackGame {
 
     private List<DealablePosition> positions;
-    private Player dealer;
+    private Dealer dealer;
 
-    public BlackjackGame(List<DealablePosition> positions, Player dealer) {
+    public BlackjackGame(List<DealablePosition> positions, Dealer dealer) {
         this.positions = positions;
         this.dealer = dealer;
     }

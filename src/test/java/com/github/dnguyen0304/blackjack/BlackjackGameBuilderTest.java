@@ -22,7 +22,7 @@ public class BlackjackGameBuilderTest {
     @Test
     public void testBuild() {
         for (int i = 0; i < BlackjackGameBuilder.PLAYER_MINIMUM; i++) {
-            this.builder.withPlayer(player);
+            this.builder.withPlayer(this.player);
         }
         this.builder.build();
     }
@@ -36,7 +36,7 @@ public class BlackjackGameBuilderTest {
     @Test
     public void testBuildTooManyPlayers() {
         for (int i = 0; i < BlackjackGameBuilder.PLAYER_MAXIMUM + 1; i++) {
-            this.builder.withPlayer(player);
+            this.builder.withPlayer(this.player);
         }
         this.exception.expect(IllegalStateException.class);
         this.builder.build();
