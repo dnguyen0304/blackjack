@@ -27,8 +27,7 @@ public class AssistedDealer implements Dealer {
 
     @Override
     public BlackjackCard draw() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.dealer.draw();
     }
 
 }
