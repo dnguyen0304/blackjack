@@ -8,8 +8,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ BlackjackGameBuilderTest.class,
                 BlackjackGameTest.class,
                 BlackjackHandTest.class,
-                DeckTest.class,
-                StackOntoDeckShuffleStrategyTest.class })
+                DeckTest.class })
 public class Test {
 
 }
