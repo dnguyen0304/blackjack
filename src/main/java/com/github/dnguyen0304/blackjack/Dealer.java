@@ -1,11 +1,11 @@
 package com.github.dnguyen0304.blackjack;
 
-public class DealingPlayer implements Player, Drawable {
+public class Dealer implements Player, Drawable {
 
     private Player player;
     private Drawable deck;
 
-    public DealingPlayer(Player player, Drawable deck) {
+    public Dealer(Player player, Drawable deck) {
         this.player = player;
         this.deck = deck;
     }
