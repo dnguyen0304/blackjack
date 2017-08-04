@@ -28,6 +28,8 @@ public class BlackjackGameBuilder {
         this(positionFactory, new ArrayList<DealablePosition>());
     }
 
+    // TODO Change to build a game with a fixed number of positions.
+
     public void withPlayer(Player player) {
         DealablePosition position = this.positionFactory.create();
         position.setPlayer(player);
