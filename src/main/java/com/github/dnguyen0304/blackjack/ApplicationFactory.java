@@ -39,7 +39,7 @@ public class ApplicationFactory {
         // Create the dealer.
         Player player = new GamePlayer(ApplicationFactory.DEALER_NAME);
         Dealer dealer = new BlackjackDealer(player, shoe, shufflingMachine);
-        builder.withPlayer(dealer);
+        builder.withDealer(dealer);
 
         // Create the game.
         BlackjackGame game = builder.build();
