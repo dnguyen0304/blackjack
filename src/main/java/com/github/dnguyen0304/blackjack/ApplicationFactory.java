@@ -31,20 +31,14 @@ public class ApplicationFactory {
             shoe.add(deck);
         }
 
-        // Create the dealer.
-        Player player = new GamePlayer(ApplicationFactory.DEALER_NAME);
-        Dealer dealer = new BlackjackDealer(player, shoe);
-
         // Create the shuffling machine.
         long seed = System.nanoTime();
         Random random = new Random(seed);
-        CardShuffler cardShuffleStrategy = CardShuffleStrategies.collections(random);
-        DeckShuffler deckShuffleStrategy = DeckShuffleStrategies.stackOnto();
-        ShufflingMachine shufflingMachine = new ShufflingMachine(cardShuffleStrategy,
-                                                                 deckShuffleStrategy);
+        CardShuffler shufflingMachine = CardShuffleStrategies.collections(random);
 
-        // Include assistance.
-        dealer = new AssistedDealer(dealer, shufflingMachine);
+        // Create the dealer.
+        Player player = new GamePlayer(ApplicationFactory.DEALER_NAME);
+        Dealer dealer = new BlackjackDealer(player, shoe, shufflingMachine);
         builder.withPlayer(dealer);
 
         // Create the game.
