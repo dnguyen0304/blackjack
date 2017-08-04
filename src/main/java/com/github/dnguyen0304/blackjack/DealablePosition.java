@@ -2,8 +2,12 @@ package com.github.dnguyen0304.blackjack;
 
 public class DealablePosition implements Comparable<DealablePosition> {
 
-    private Player player;
     private BlackjackHand hand;
+    private Player player;
+
+    public DealablePosition(BlackjackHand hand) {
+        this.hand = hand;
+    }
 
     public Player getPlayer() {
         return this.player;
@@ -13,17 +17,14 @@ public class DealablePosition implements Comparable<DealablePosition> {
         this.player = player;
     }
 
-    public BlackjackHand getHand() {
-        return this.hand;
-    }
-
     public Boolean isOpen() {
         return this.player == null;
     }
 
     @Override
     public int compareTo(DealablePosition other) {
-        return this.getHand().compareTo(other.getHand());
+        // How can this access other instances' private fields?
+        return this.hand.compareTo(other.hand);
     }
 
 }

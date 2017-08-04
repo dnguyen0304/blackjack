@@ -17,7 +17,7 @@ public class BlackjackGameTest {
     @Test
     public void testGetPlayerCount() {
         List<DealablePosition> positions = new ArrayList<DealablePosition>();
-        DealablePosition position = new DealablePosition();
+        DealablePosition position = new DealablePosition(new BlackjackHand());
         positions.add(position);
         BlackjackGame game = new BlackjackGame(positions);
         assertEquals(0, game.getPlayerCount());
@@ -26,8 +26,8 @@ public class BlackjackGameTest {
     @Test
     public void testSetDealer() {
         BlackjackGame game = new BlackjackGameBuilder()
-            .withPosition(new DealablePosition())
-            .withPosition(new DealablePosition())
+            .withPosition(new DealablePosition(new BlackjackHand()))
+            .withPosition(new DealablePosition(new BlackjackHand()))
             .build();
         game.setDealer(null);
         assertEquals(1, game.getPlayerCount());
@@ -44,7 +44,7 @@ public class BlackjackGameTest {
     @Test
     public void testAddPlayer() {
         List<DealablePosition> positions = new ArrayList<DealablePosition>();
-        DealablePosition position = new DealablePosition();
+        DealablePosition position = new DealablePosition(new BlackjackHand());
         positions.add(position);
         BlackjackGame game = new BlackjackGame(positions);
         game.addPlayer(null);
