@@ -4,10 +4,12 @@ public class BlackjackDealer implements Dealer {
 
     private Player player;
     private Drawable deck;
+    private CardShuffler cardShuffler;
 
-    public BlackjackDealer(Player player, Drawable deck) {
+    public BlackjackDealer(Player player, Drawable deck, CardShuffler cardShuffler) {
         this.player = player;
         this.deck = deck;
+        this.cardShuffler = cardShuffler;
     }
 
     @Override
@@ -23,6 +25,11 @@ public class BlackjackDealer implements Dealer {
     @Override
     public void setChipTotal(int chipTotal) {
         this.player.setChipTotal(chipTotal);
+    }
+
+    @Override
+    public void shuffle() {
+        this.deck = this.cardShuffler.shuffle(this.deck);
     }
 
     @Override
