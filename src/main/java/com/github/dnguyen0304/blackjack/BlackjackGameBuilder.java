@@ -31,15 +31,19 @@ public class BlackjackGameBuilder {
     // TODO Change to build a game with a fixed number of positions.
 
     public void withPlayer(Player player) {
-        DealablePosition position = this.positionFactory.create();
-        position.setPlayer(player);
-        this.positions.add(position);
+        this.withPlayer(player, PlayerType.SIMPLE);
     }
 
     // TODO Define a build step.
     public void withDealer(Dealer dealer) {
-        this.withPlayer(dealer);
+        this.withPlayer(dealer, PlayerType.DEALER);
         this.dealer = dealer;
+    }
+
+    private void withPlayer(Player player, PlayerType type) {
+        DealablePosition position = this.positionFactory.create();
+        position.setPlayer(player, type);
+        this.positions.add(position);
     }
 
     public BlackjackGame build() {
