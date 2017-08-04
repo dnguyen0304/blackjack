@@ -1,5 +1,7 @@
 package com.github.dnguyen0304.blackjack;
 
+import java.util.Random;
+
 public class ApplicationFactory {
 
     private static final String DEALER_NAME = "Dealer";
@@ -22,16 +24,27 @@ public class ApplicationFactory {
             builder.withPlayer(player);
         }
 
-        // Create the deck(s).
-        Deck deck = Deck.standard52();
-        for (int i = 0; i < ApplicationFactory.DECK_COUNT - 1; i++) {
-            Deck other = Deck.standard52();
-            other.stackOnto(deck);
+        // Create the shoe.
+        Shoe shoe = new Shoe();
+        for (int i = 0; i < ApplicationFactory.DECK_COUNT; i++) {
+            Deck deck = Deck.standard52();
+            shoe.add(deck);
         }
 
         // Create the dealer.
         Player player = new GamePlayer(ApplicationFactory.DEALER_NAME);
-        Dealer dealer = new BlackjackDealer(player, deck);
+        Dealer dealer = new BlackjackDealer(player, shoe);
+
+        // Create the shuffling machine.
+        long seed = System.nanoTime();
+        Random random = new Random(seed);
+        CardShuffler cardShuffleStrategy = CardShuffleStrategies.collections(random);
+        DeckShuffler deckShuffleStrategy = DeckShuffleStrategies.stackOnto();
+        ShufflingMachine shufflingMachine = new ShufflingMachine(cardShuffleStrategy,
+                                                                 deckShuffleStrategy);
+
+        // Include assistance.
+        dealer = new AssistedDealer(dealer, shufflingMachine);
         builder.withPlayer(dealer);
 
         // Create the game.
