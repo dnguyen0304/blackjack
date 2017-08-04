@@ -25,10 +25,10 @@ public class ApplicationFactory {
         }
 
         // Create the shoe.
-        Shoe shoe = new Shoe();
-        for (int i = 0; i < ApplicationFactory.DECK_COUNT; i++) {
+        Deck shoe = Deck.standard52();
+        for (int i = 0; i < ApplicationFactory.DECK_COUNT - 1; i++) {
             Deck deck = Deck.standard52();
-            shoe.add(deck);
+            deck.stackOnto(shoe);
         }
 
         // Create the shuffling machine.
