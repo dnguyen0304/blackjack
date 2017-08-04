@@ -8,34 +8,35 @@ import org.junit.rules.ExpectedException;
 public class BlackjackGameBuilderTest {
 
     private BlackjackGameBuilder builder;
-    private DealablePosition position;
+    private Player player;
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
 
     @Before
     public void setUp() {
-        this.builder = new BlackjackGameBuilder();
+        this.builder = new BlackjackGameBuilder(new DealablePositionFactory());
+        this.player = new Player(null);
     }
 
     @Test
     public void testBuild() {
         for (int i = 0; i < BlackjackGameBuilder.PLAYER_MINIMUM; i++) {
-            this.builder.withPosition(position);
+            this.builder.withPlayer(player);
         }
         this.builder.build();
     }
 
     @Test
-    public void testBuildTooFewPositions() {
+    public void testBuildTooFewPlayers() {
         this.exception.expect(IllegalStateException.class);
         this.builder.build();
     }
 
     @Test
-    public void testBuildTooManyPositions() {
+    public void testBuildTooManyPlayers() {
         for (int i = 0; i < BlackjackGameBuilder.PLAYER_MAXIMUM + 1; i++) {
-            this.builder.withPosition(position);
+            this.builder.withPlayer(player);
         }
         this.exception.expect(IllegalStateException.class);
         this.builder.build();
