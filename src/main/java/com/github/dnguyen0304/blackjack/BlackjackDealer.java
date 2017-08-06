@@ -23,8 +23,8 @@ public class BlackjackDealer implements Dealer {
     }
 
     @Override
-    public int bet() {
-        return 0;
+    public void bet(int amount) {
+        this.player.bet(amount);
     }
 
     @Override

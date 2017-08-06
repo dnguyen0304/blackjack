@@ -6,6 +6,6 @@ public interface Player {
 
     int getChipTotal();
 
-    public int bet();
+    public void bet(int amount);
 
 }

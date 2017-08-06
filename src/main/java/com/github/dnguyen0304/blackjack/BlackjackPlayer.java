@@ -31,8 +31,8 @@ public class BlackjackPlayer implements CardGamePlayer {
     }
 
     @Override
-    public void setChipTotal(int chipTotal) {
-        this.chipTotal = chipTotal;
+    public void bet(int amount) {
+        this.chipTotal -= amount;
     }
 
     @Override
