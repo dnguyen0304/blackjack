@@ -1,6 +1,9 @@
 package com.github.dnguyen0304.blackjack;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class BlackjackGame {
 
@@ -27,6 +30,42 @@ public class BlackjackGame {
     }
 
     public void play() {
+
+    }
+
+    private Iterator<DealablePosition> createAllPositionIterator() {
+        List<DealablePosition> positions = new ArrayList<DealablePosition>();
+        positions.add(this.firstPosition);
+        positions.addAll(this.otherPositions);
+        positions.add(this.dealerPosition);
+        Iterator<DealablePosition> positionIterator = new PositionIterator(positions);
+        return positionIterator;
+    }
+
+    // How do closures behave?
+    private class PositionIterator implements Iterator<DealablePosition> {
+
+        private List<DealablePosition> positions;
+        private int i = 0;
+
+        public PositionIterator(List<DealablePosition> positions) {
+            this.positions = positions;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return i < this.positions.size();
+        }
+
+        @Override
+        public DealablePosition next() throws NoSuchElementException {
+            if (!this.hasNext()) {
+                throw new NoSuchElementException();
+            }
+            DealablePosition position = this.positions.get(this.i);
+            this.i++;
+            return position;
+        }
 
     }
 
