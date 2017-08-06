@@ -18,7 +18,7 @@ public class BlackjackHand implements Comparable<BlackjackHand> {
      *
      * @param cards List of cards contained in the hand.
      */
-    public BlackjackHand(List<BlackjackCard> cards) {
+    private BlackjackHand(List<BlackjackCard> cards) {
         this.cards = cards;
         this.value = 0;
         this.hasAce = false;
