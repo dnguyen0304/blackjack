@@ -1,5 +1,8 @@
 package com.github.dnguyen0304.blackjack;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.Random;
 
 public class ApplicationFactory {
@@ -36,9 +39,14 @@ public class ApplicationFactory {
         Random random = new Random(seed);
         CardShuffler shufflingMachine = CardShuffleStrategies.collections(random);
 
+        // Create the asker.
+        Reader reader = new InputStreamReader(System.in);
+        BufferedReader in = new BufferedReader(reader);
+        BlackjackAsker asker = new BlackjackAsker(in);
+
         // Create the dealer.
-        Player player = new BlackjackPlayer(ApplicationFactory.DEALER_NAME, 0);
-        Dealer dealer = new BlackjackDealer(player, shoe, shufflingMachine);
+        CardGamePlayer player = new BlackjackPlayer(ApplicationFactory.DEALER_NAME, 0);
+        Dealer dealer = new BlackjackDealer(player, shoe, shufflingMachine, asker);
         builder.withDealer(dealer);
 
         // Create the game.
