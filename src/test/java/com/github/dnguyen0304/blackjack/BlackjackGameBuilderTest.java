@@ -16,7 +16,7 @@ public class BlackjackGameBuilderTest {
     @Before
     public void setUp() {
         this.builder = new BlackjackGameBuilder();
-        this.player = new DefaultPlayer(null);
+        this.player = new BlackjackPlayer(null, null);
     }
 
     @Test

@@ -3,20 +3,20 @@ package com.github.dnguyen0304.blackjack;
 public class BlackjackPlayer implements CardGamePlayer {
 
     private String name;
-    private int chipTotal;
+    private Integer chipTotal;
     private BlackjackHand hand;
 
     /**
      * This constructor must be called by all other alternate or overloaded
      * constructors.
      */
-    private BlackjackPlayer(String name, int chipTotal, BlackjackHand hand) {
+    private BlackjackPlayer(String name, Integer chipTotal, BlackjackHand hand) {
         this.name = name;
         this.chipTotal = chipTotal;
         this.hand = hand;
     }
 
-    public BlackjackPlayer(String name, int chipTotal) {
+    public BlackjackPlayer(String name, Integer chipTotal) {
         this(name, chipTotal, new BlackjackHand());
     }
 

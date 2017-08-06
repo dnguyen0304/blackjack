@@ -9,19 +9,19 @@ public class BlackjackGameBuilder {
     public static final int PLAYER_MAXIMUM = 6;
 
     private Dealer dealer;
-    private DefaultPlayer firstPlayer;
-    private List<DefaultPlayer> otherPlayers;
+    private CardGamePlayer firstPlayer;
+    private List<CardGamePlayer> otherPlayers;
 
     /**
      * This constructor must be called by all other alternate or overloaded
      * constructors.
      */
-    private BlackjackGameBuilder(List<DefaultPlayer> otherPlayers) {
+    private BlackjackGameBuilder(List<CardGamePlayer> otherPlayers) {
         this.otherPlayers = otherPlayers;
     }
 
     public BlackjackGameBuilder() {
-        this(new ArrayList<DefaultPlayer>());
+        this(new ArrayList<CardGamePlayer>());
     }
 
     // TODO Change to build a game with a fixed number of positions.
@@ -31,7 +31,7 @@ public class BlackjackGameBuilder {
         this.dealer = dealer;
     }
 
-    public void withPlayer(Player player) {
+    public void withPlayer(CardGamePlayer player) {
         if (this.firstPlayer == null) {
             this.firstPlayer = player;
         } else {
