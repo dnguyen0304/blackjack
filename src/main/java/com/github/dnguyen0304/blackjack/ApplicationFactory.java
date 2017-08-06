@@ -4,8 +4,9 @@ import java.util.Random;
 
 public class ApplicationFactory {
 
-    private static final String DEALER_NAME = "Dealer";
     private static final int DECK_COUNT = 8;
+    private static final String DEALER_NAME = "Dealer";
+    private static final Integer CHIP_TOTAL = new Integer(50);
 
     private final String[] args;
 
@@ -19,7 +20,7 @@ public class ApplicationFactory {
 
         // Create the players.
         for (String name : this.args) {
-            Player player = new GamePlayer(name);
+            CardGamePlayer player = new BlackjackPlayer(name, ApplicationFactory.CHIP_TOTAL);
             builder.withPlayer(player);
         }
 
