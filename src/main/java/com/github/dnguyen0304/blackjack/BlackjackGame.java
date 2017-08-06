@@ -4,71 +4,61 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 public class BlackjackGame {
 
-    private DefaultPosition dealerPosition;
-    private DefaultPosition firstPosition;
-    private List<DefaultPosition> otherPositions;
+    private Dealer dealer;
+    private CardGamePlayer firstPlayer;
+    private List<CardGamePlayer> otherPlayers;
 
-    public BlackjackGame(DefaultPosition dealerPosition,
-                         DefaultPosition firstPosition,
-                         List<DefaultPosition> otherPositions) {
-        this.dealerPosition = dealerPosition;
-        this.firstPosition = firstPosition;
-        this.otherPositions = otherPositions;
+    public BlackjackGame(Dealer dealer,
+                         CardGamePlayer firstPlayer,
+                         List<CardGamePlayer> otherPlayers) {
+        this.dealer = dealer;
+        this.firstPlayer = firstPlayer;
+        this.otherPlayers = otherPlayers;
     }
 
     public int countPlayers() {
-        int count = BlackjackGameBuilder.PLAYER_MINIMUM;
-        for (DefaultPosition position : this.otherPositions) {
-            if (!position.isOpen()) {
-                count += 1;
-            }
-        }
-        return count;
+        return BlackjackGameBuilder.PLAYER_MINIMUM + this.otherPlayers.size();
     }
 
     public void play() {
 
     }
 
-    private Iterator<DefaultPosition> createActivePositionIterator() {
-        List<DefaultPosition> positions = new ArrayList<DefaultPosition>();
-        positions.add(this.firstPosition);
-        positions.addAll(this.otherPositions);
-        positions.add(this.dealerPosition);
-        positions = positions.stream()
-                             .filter(DefaultPosition::isOpen)
-                             .collect(Collectors.toCollection(ArrayList::new));
-        Iterator<DefaultPosition> positionIterator = new PositionIterator(positions);
-        return positionIterator;
+    private Iterator<CardGamePlayer> createAllPlayerIterator() {
+        List<CardGamePlayer> players = new ArrayList<CardGamePlayer>();
+        players.add(this.firstPlayer);
+        players.addAll(this.otherPlayers);
+        players.add(this.dealer);
+        Iterator<CardGamePlayer> playerIterator = new PlayerIterator(players);
+        return playerIterator;
     }
 
     // How do closures behave?
-    private class PositionIterator implements Iterator<DefaultPosition> {
+    private class PlayerIterator implements Iterator<CardGamePlayer> {
 
-        private List<DefaultPosition> positions;
+        private List<CardGamePlayer> players;
         private int i = 0;
 
-        public PositionIterator(List<DefaultPosition> positions) {
-            this.positions = positions;
+        public PlayerIterator(List<CardGamePlayer> players) {
+            this.players = players;
         }
 
         @Override
         public boolean hasNext() {
-            return i < this.positions.size();
+            return i < this.players.size();
         }
 
         @Override
-        public DefaultPosition next() throws NoSuchElementException {
+        public CardGamePlayer next() throws NoSuchElementException {
             if (!this.hasNext()) {
                 throw new NoSuchElementException();
             }
-            DefaultPosition position = this.positions.get(this.i);
+            CardGamePlayer player = this.players.get(this.i);
             this.i++;
-            return position;
+            return player;
         }
 
     }
