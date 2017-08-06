@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class ApplicationFactory {
 
+    private static final int CHIP_TOTAL = 50;
     private static final int DECK_COUNT = 8;
     private static final String DEALER_NAME = "Dealer";
-    private static final int CHIP_TOTAL = 50;
 
     private final String[] args;
 
@@ -37,7 +37,7 @@ public class ApplicationFactory {
         CardShuffler shufflingMachine = CardShuffleStrategies.collections(random);
 
         // Create the dealer.
-        Player player = new GamePlayer(ApplicationFactory.DEALER_NAME);
+        Player player = new BlackjackPlayer(ApplicationFactory.DEALER_NAME, 0);
         Dealer dealer = new BlackjackDealer(player, shoe, shufflingMachine);
         builder.withDealer(dealer);
 
