@@ -8,4 +8,6 @@ public interface Player {
 
     void setChipTotal(int chipTotal);
 
+    public int bet();
+
 }
