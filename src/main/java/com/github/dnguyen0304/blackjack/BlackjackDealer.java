@@ -1,5 +1,7 @@
 package com.github.dnguyen0304.blackjack;
 
+import java.io.IOException;
+
 public class BlackjackDealer implements Dealer {
 
     private CardGamePlayer player;
@@ -35,7 +37,7 @@ public class BlackjackDealer implements Dealer {
     }
 
     @Override
-    public void askForBet(CardGamePlayer player) {
+    public void askForBet(CardGamePlayer player) throws IOException {
         int amount = this.asker.askForBetAmount(player);
         player.bet(amount);
     }
