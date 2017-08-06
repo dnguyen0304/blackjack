@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class BlackjackGame {
 
@@ -33,11 +34,14 @@ public class BlackjackGame {
 
     }
 
-    private Iterator<DealablePosition> createAllPositionIterator() {
+    private Iterator<DealablePosition> createActivePositionIterator() {
         List<DealablePosition> positions = new ArrayList<DealablePosition>();
         positions.add(this.firstPosition);
         positions.addAll(this.otherPositions);
         positions.add(this.dealerPosition);
+        positions = positions.stream()
+                             .filter(DealablePosition::isOpen)
+                             .collect(Collectors.toCollection(ArrayList::new));
         Iterator<DealablePosition> positionIterator = new PositionIterator(positions);
         return positionIterator;
     }
