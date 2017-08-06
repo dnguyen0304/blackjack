@@ -8,13 +8,13 @@ import org.junit.Test;
 public class BlackjackGameTest {
 
     private BlackjackGameBuilder builder;
-    private Player player;
+    private CardGamePlayer player;
     private Dealer dealer;
 
     @Before
     public void setUp() {
-        this.builder = new BlackjackGameBuilder(new DefaultPositionFactory());
-        this.player = new GamePlayer(null);
+        this.builder = new BlackjackGameBuilder();
+        this.player = new DefaultPlayer(null);
         this.dealer = new BlackjackDealer(null, null, null);
     }
 

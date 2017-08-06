@@ -15,8 +15,7 @@ public class ApplicationFactory {
 
     // How do you define a generic method signature for returning any object?
     public Application create() {
-        DefaultPositionFactory positionFactory = new DefaultPositionFactory();
-        BlackjackGameBuilder builder = new BlackjackGameBuilder(positionFactory);
+        BlackjackGameBuilder builder = new BlackjackGameBuilder();
 
         // Create the players.
         for (String name : this.args) {

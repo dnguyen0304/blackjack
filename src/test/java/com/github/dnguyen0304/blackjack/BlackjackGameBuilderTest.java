@@ -8,15 +8,15 @@ import org.junit.rules.ExpectedException;
 public class BlackjackGameBuilderTest {
 
     private BlackjackGameBuilder builder;
-    private Player player;
+    private CardGamePlayer player;
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
 
     @Before
     public void setUp() {
-        this.builder = new BlackjackGameBuilder(new DefaultPositionFactory());
-        this.player = new GamePlayer(null);
+        this.builder = new BlackjackGameBuilder();
+        this.player = new DefaultPlayer(null);
     }
 
     @Test

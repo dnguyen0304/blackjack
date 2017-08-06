@@ -8,59 +8,48 @@ public class BlackjackGameBuilder {
     public static final int PLAYER_MINIMUM = 2;
     public static final int PLAYER_MAXIMUM = 6;
 
-    private DefaultPositionFactory positionFactory;
-    private DefaultPosition dealerPosition;
-    private DefaultPosition firstPosition;
-    private List<DefaultPosition> otherPositions;
+    private Dealer dealer;
+    private DefaultPlayer firstPlayer;
+    private List<DefaultPlayer> otherPlayers;
 
     /**
      * This constructor must be called by all other alternate or overloaded
      * constructors.
-     *
-     * @param positionFactory Factory for creating positions.
-     * @param positions List of positions in the game.
      */
-    public BlackjackGameBuilder(DefaultPositionFactory positionFactory, List<DefaultPosition> otherPositions) {
-        this.positionFactory = positionFactory;
-        this.otherPositions = otherPositions;
+    private BlackjackGameBuilder(List<DefaultPlayer> otherPlayers) {
+        this.otherPlayers = otherPlayers;
     }
 
-    public BlackjackGameBuilder(DefaultPositionFactory positionFactory) {
-        this(positionFactory, new ArrayList<DefaultPosition>());
+    public BlackjackGameBuilder() {
+        this(new ArrayList<DefaultPlayer>());
     }
 
     // TODO Change to build a game with a fixed number of positions.
 
     // TODO Define a build step.
     public void withDealer(Dealer dealer) {
-        DefaultPosition position = this.positionFactory.create();
-        position.setPlayer(dealer);
-        this.dealerPosition = position;
+        this.dealer = dealer;
     }
 
     public void withPlayer(Player player) {
-        DefaultPosition position = this.positionFactory.create();
-        position.setPlayer(player);
-        if (this.firstPosition == null) {
-            this.firstPosition = position;
+        if (this.firstPlayer == null) {
+            this.firstPlayer = player;
         } else {
-            this.otherPositions.add(position);
+            this.otherPlayers.add(player);
         }
     }
 
     public BlackjackGame build() {
         this.validate();
-        return new BlackjackGame(this.dealerPosition,
-                                 this.firstPosition,
-                                 this.otherPositions);
+        return new BlackjackGame(this.dealer, this.firstPlayer, this.otherPlayers);
     }
 
     private void validate() throws IllegalStateException {
-        int count = this.otherPositions.size();
-        if (this.dealerPosition != null) {
+        int count = this.otherPlayers.size();
+        if (this.dealer != null) {
             count += 1;
         }
-        if (this.firstPosition != null) {
+        if (this.firstPlayer != null) {
             count += 1;
         }
         if (count < BlackjackGameBuilder.PLAYER_MINIMUM ||
