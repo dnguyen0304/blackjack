@@ -11,7 +11,7 @@ public class BlackjackAsker {
         this.in = in;
     }
 
-    public int askForBetAmount(Player player) throws IOException {
+    public int askForBetAmount(CardGamePlayer player) throws IOException {
         String input = this.in.readLine();
         int amount = Integer.parseInt(input);
         return amount;
