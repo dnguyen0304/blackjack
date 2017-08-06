@@ -15,7 +15,7 @@ public class BlackjackGameBuilderTest {
 
     @Before
     public void setUp() {
-        this.builder = new BlackjackGameBuilder(new DealablePositionFactory());
+        this.builder = new BlackjackGameBuilder(new DefaultPositionFactory());
         this.player = new GamePlayer(null);
     }
 

@@ -15,7 +15,7 @@ public class ApplicationFactory {
 
     // How do you define a generic method signature for returning any object?
     public Application create() {
-        DealablePositionFactory positionFactory = new DealablePositionFactory();
+        DefaultPositionFactory positionFactory = new DefaultPositionFactory();
         BlackjackGameBuilder builder = new BlackjackGameBuilder(positionFactory);
 
         // Create the players.

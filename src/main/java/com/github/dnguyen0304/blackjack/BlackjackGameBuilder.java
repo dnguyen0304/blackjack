@@ -8,7 +8,7 @@ public class BlackjackGameBuilder {
     public static final int PLAYER_MINIMUM = 2;
     public static final int PLAYER_MAXIMUM = 6;
 
-    private DealablePositionFactory positionFactory;
+    private DefaultPositionFactory positionFactory;
     private DealablePosition dealerPosition;
     private DealablePosition firstPosition;
     private List<DealablePosition> otherPositions;
@@ -20,12 +20,12 @@ public class BlackjackGameBuilder {
      * @param positionFactory Factory for creating positions.
      * @param positions List of positions in the game.
      */
-    public BlackjackGameBuilder(DealablePositionFactory positionFactory, List<DealablePosition> otherPositions) {
+    public BlackjackGameBuilder(DefaultPositionFactory positionFactory, List<DealablePosition> otherPositions) {
         this.positionFactory = positionFactory;
         this.otherPositions = otherPositions;
     }
 
-    public BlackjackGameBuilder(DealablePositionFactory positionFactory) {
+    public BlackjackGameBuilder(DefaultPositionFactory positionFactory) {
         this(positionFactory, new ArrayList<DealablePosition>());
     }
 
