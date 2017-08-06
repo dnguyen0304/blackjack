@@ -4,4 +4,6 @@ public interface Dealer extends CardGamePlayer, Drawable {
 
     public void shuffle();
 
+    public void askForBet(Player player);
+
 }

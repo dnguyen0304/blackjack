@@ -5,11 +5,13 @@ public class BlackjackDealer implements Dealer {
     private CardGamePlayer player;
     private Drawable deck;
     private CardShuffler cardShuffler;
+    private BlackjackAsker asker;
 
-    public BlackjackDealer(CardGamePlayer player, Drawable deck, CardShuffler cardShuffler) {
+    public BlackjackDealer(CardGamePlayer player, Drawable deck, CardShuffler cardShuffler, BlackjackAsker asker) {
         this.player = player;
         this.deck = deck;
         this.cardShuffler = cardShuffler;
+        this.asker = asker;
     }
 
     @Override
@@ -30,6 +32,12 @@ public class BlackjackDealer implements Dealer {
     @Override
     public void shuffle() {
         this.deck = this.cardShuffler.shuffle(this.deck);
+    }
+
+    @Override
+    public void askForBet(Player player) {
+        int amount = this.asker.askForBetAmount();
+        player.bet(amount);
     }
 
     @Override
