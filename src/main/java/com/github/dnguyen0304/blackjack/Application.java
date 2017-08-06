@@ -1,5 +1,7 @@
 package com.github.dnguyen0304.blackjack;
 
+import java.io.IOException;
+
 public class Application {
 
     private BlackjackGame game;
@@ -8,7 +10,7 @@ public class Application {
         this.game = game;
     }
 
-    public void start() {
+    public void start() throws IOException {
         this.game.play();
     }
 
