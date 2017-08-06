@@ -8,13 +8,13 @@ public class DealablePositionTest {
 
     @Test
     public void testIsOpen() {
-        DealablePosition position = new DealablePosition(null);
+        DefaultPosition position = new DefaultPosition(null);
         assertTrue(position.isOpen());
     }
 
     @Test
     public void testIsNotOpen() {
-        DealablePosition position = new DealablePosition(null);
+        DefaultPosition position = new DefaultPosition(null);
         position.setPlayer(new GamePlayer(null));
         assertTrue(!position.isOpen());
     }

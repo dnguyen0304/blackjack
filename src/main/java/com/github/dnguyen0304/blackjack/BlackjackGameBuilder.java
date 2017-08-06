@@ -9,9 +9,9 @@ public class BlackjackGameBuilder {
     public static final int PLAYER_MAXIMUM = 6;
 
     private DefaultPositionFactory positionFactory;
-    private DealablePosition dealerPosition;
-    private DealablePosition firstPosition;
-    private List<DealablePosition> otherPositions;
+    private DefaultPosition dealerPosition;
+    private DefaultPosition firstPosition;
+    private List<DefaultPosition> otherPositions;
 
     /**
      * This constructor must be called by all other alternate or overloaded
@@ -20,26 +20,26 @@ public class BlackjackGameBuilder {
      * @param positionFactory Factory for creating positions.
      * @param positions List of positions in the game.
      */
-    public BlackjackGameBuilder(DefaultPositionFactory positionFactory, List<DealablePosition> otherPositions) {
+    public BlackjackGameBuilder(DefaultPositionFactory positionFactory, List<DefaultPosition> otherPositions) {
         this.positionFactory = positionFactory;
         this.otherPositions = otherPositions;
     }
 
     public BlackjackGameBuilder(DefaultPositionFactory positionFactory) {
-        this(positionFactory, new ArrayList<DealablePosition>());
+        this(positionFactory, new ArrayList<DefaultPosition>());
     }
 
     // TODO Change to build a game with a fixed number of positions.
 
     // TODO Define a build step.
     public void withDealer(Dealer dealer) {
-        DealablePosition position = this.positionFactory.create();
+        DefaultPosition position = this.positionFactory.create();
         position.setPlayer(dealer);
         this.dealerPosition = position;
     }
 
     public void withPlayer(Player player) {
-        DealablePosition position = this.positionFactory.create();
+        DefaultPosition position = this.positionFactory.create();
         position.setPlayer(player);
         if (this.firstPosition == null) {
             this.firstPosition = position;

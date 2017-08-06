@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 
 public class BlackjackGame {
 
-    private DealablePosition dealerPosition;
-    private DealablePosition firstPosition;
-    private List<DealablePosition> otherPositions;
+    private DefaultPosition dealerPosition;
+    private DefaultPosition firstPosition;
+    private List<DefaultPosition> otherPositions;
 
-    public BlackjackGame(DealablePosition dealerPosition,
-                         DealablePosition firstPosition,
-                         List<DealablePosition> otherPositions) {
+    public BlackjackGame(DefaultPosition dealerPosition,
+                         DefaultPosition firstPosition,
+                         List<DefaultPosition> otherPositions) {
         this.dealerPosition = dealerPosition;
         this.firstPosition = firstPosition;
         this.otherPositions = otherPositions;
@@ -22,7 +22,7 @@ public class BlackjackGame {
 
     public int countPlayers() {
         int count = BlackjackGameBuilder.PLAYER_MINIMUM;
-        for (DealablePosition position : this.otherPositions) {
+        for (DefaultPosition position : this.otherPositions) {
             if (!position.isOpen()) {
                 count += 1;
             }
@@ -34,25 +34,25 @@ public class BlackjackGame {
 
     }
 
-    private Iterator<DealablePosition> createActivePositionIterator() {
-        List<DealablePosition> positions = new ArrayList<DealablePosition>();
+    private Iterator<DefaultPosition> createActivePositionIterator() {
+        List<DefaultPosition> positions = new ArrayList<DefaultPosition>();
         positions.add(this.firstPosition);
         positions.addAll(this.otherPositions);
         positions.add(this.dealerPosition);
         positions = positions.stream()
-                             .filter(DealablePosition::isOpen)
+                             .filter(DefaultPosition::isOpen)
                              .collect(Collectors.toCollection(ArrayList::new));
-        Iterator<DealablePosition> positionIterator = new PositionIterator(positions);
+        Iterator<DefaultPosition> positionIterator = new PositionIterator(positions);
         return positionIterator;
     }
 
     // How do closures behave?
-    private class PositionIterator implements Iterator<DealablePosition> {
+    private class PositionIterator implements Iterator<DefaultPosition> {
 
-        private List<DealablePosition> positions;
+        private List<DefaultPosition> positions;
         private int i = 0;
 
-        public PositionIterator(List<DealablePosition> positions) {
+        public PositionIterator(List<DefaultPosition> positions) {
             this.positions = positions;
         }
 
@@ -62,11 +62,11 @@ public class BlackjackGame {
         }
 
         @Override
-        public DealablePosition next() throws NoSuchElementException {
+        public DefaultPosition next() throws NoSuchElementException {
             if (!this.hasNext()) {
                 throw new NoSuchElementException();
             }
-            DealablePosition position = this.positions.get(this.i);
+            DefaultPosition position = this.positions.get(this.i);
             this.i++;
             return position;
         }
