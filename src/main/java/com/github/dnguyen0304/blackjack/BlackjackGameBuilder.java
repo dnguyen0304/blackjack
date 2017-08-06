@@ -9,8 +9,9 @@ public class BlackjackGameBuilder {
     public static final int PLAYER_MAXIMUM = 6;
 
     private DealablePositionFactory positionFactory;
-    private List<DealablePosition> positions;
-    private Dealer dealer;
+    private DealablePosition dealerPosition;
+    private DealablePosition firstPosition;
+    private List<DealablePosition> otherPositions;
 
     /**
      * This constructor must be called by all other alternate or overloaded
@@ -19,9 +20,9 @@ public class BlackjackGameBuilder {
      * @param positionFactory Factory for creating positions.
      * @param positions List of positions in the game.
      */
-    public BlackjackGameBuilder(DealablePositionFactory positionFactory, List<DealablePosition> positions) {
+    public BlackjackGameBuilder(DealablePositionFactory positionFactory, List<DealablePosition> otherPositions) {
         this.positionFactory = positionFactory;
-        this.positions = positions;
+        this.otherPositions = otherPositions;
     }
 
     public BlackjackGameBuilder(DealablePositionFactory positionFactory) {
@@ -30,30 +31,40 @@ public class BlackjackGameBuilder {
 
     // TODO Change to build a game with a fixed number of positions.
 
-    public void withPlayer(Player player) {
-        this.withPlayer(player, PlayerType.SIMPLE);
-    }
-
     // TODO Define a build step.
     public void withDealer(Dealer dealer) {
-        this.withPlayer(dealer, PlayerType.DEALER);
-        this.dealer = dealer;
+        DealablePosition position = this.positionFactory.create();
+        position.setPlayer(dealer, PlayerType.DEALER);
+        this.dealerPosition = position;
     }
 
-    private void withPlayer(Player player, PlayerType type) {
+    public void withPlayer(Player player) {
         DealablePosition position = this.positionFactory.create();
-        position.setPlayer(player, type);
-        this.positions.add(position);
+        position.setPlayer(player, PlayerType.SIMPLE);
+        if (this.firstPosition == null) {
+            this.firstPosition = position;
+        } else {
+            this.otherPositions.add(position);
+        }
     }
 
     public BlackjackGame build() {
         this.validate();
-        return new BlackjackGame(this.positions, this.dealer);
+        return new BlackjackGame(this.dealerPosition,
+                                 this.firstPosition,
+                                 this.otherPositions);
     }
 
     private void validate() throws IllegalStateException {
-        if (this.positions.size() < BlackjackGameBuilder.PLAYER_MINIMUM ||
-            this.positions.size() > BlackjackGameBuilder.PLAYER_MAXIMUM) {
+        int count = this.otherPositions.size();
+        if (this.dealerPosition != null) {
+            count += 1;
+        }
+        if (this.firstPosition != null) {
+            count += 1;
+        }
+        if (count < BlackjackGameBuilder.PLAYER_MINIMUM ||
+            count > BlackjackGameBuilder.PLAYER_MAXIMUM) {
                 String pattern = "The number of positions must be between %d and %d, inclusive.";
                 String message = String.format(pattern,
                                                BlackjackGameBuilder.PLAYER_MINIMUM,

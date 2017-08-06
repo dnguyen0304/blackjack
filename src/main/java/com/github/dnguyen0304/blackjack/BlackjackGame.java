@@ -4,17 +4,21 @@ import java.util.List;
 
 public class BlackjackGame {
 
-    private List<DealablePosition> positions;
-    private Dealer dealer;
+    private DealablePosition dealerPosition;
+    private DealablePosition firstPosition;
+    private List<DealablePosition> otherPositions;
 
-    public BlackjackGame(List<DealablePosition> positions, Dealer dealer) {
-        this.positions = positions;
-        this.dealer = dealer;
+    public BlackjackGame(DealablePosition dealerPosition,
+                         DealablePosition firstPosition,
+                         List<DealablePosition> otherPositions) {
+        this.dealerPosition = dealerPosition;
+        this.firstPosition = firstPosition;
+        this.otherPositions = otherPositions;
     }
 
     public int countPlayers() {
-        int count = 0;
-        for (DealablePosition position : this.positions) {
+        int count = BlackjackGameBuilder.PLAYER_MINIMUM;
+        for (DealablePosition position : this.otherPositions) {
             if (!position.isOpen()) {
                 count += 1;
             }
