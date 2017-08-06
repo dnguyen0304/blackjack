@@ -1,5 +1,6 @@
 package com.github.dnguyen0304.blackjack;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,7 +24,7 @@ public class BlackjackGame {
         return BlackjackGameBuilder.PLAYER_MINIMUM + this.otherPlayers.size();
     }
 
-    public void play() {
+    public void play() throws IOException {
 
     }
 
