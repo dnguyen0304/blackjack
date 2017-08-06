@@ -6,7 +6,7 @@ public class ApplicationFactory {
 
     private static final int DECK_COUNT = 8;
     private static final String DEALER_NAME = "Dealer";
-    private static final Integer CHIP_TOTAL = new Integer(50);
+    private static final int CHIP_TOTAL = 50;
 
     private final String[] args;
 
