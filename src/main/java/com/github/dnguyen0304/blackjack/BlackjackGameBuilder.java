@@ -34,13 +34,13 @@ public class BlackjackGameBuilder {
     // TODO Define a build step.
     public void withDealer(Dealer dealer) {
         DealablePosition position = this.positionFactory.create();
-        position.setPlayer(dealer, PlayerType.DEALER);
+        position.setPlayer(dealer);
         this.dealerPosition = position;
     }
 
     public void withPlayer(Player player) {
         DealablePosition position = this.positionFactory.create();
-        position.setPlayer(player, PlayerType.SIMPLE);
+        position.setPlayer(player);
         if (this.firstPosition == null) {
             this.firstPosition = position;
         } else {

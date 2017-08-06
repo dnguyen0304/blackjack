@@ -15,21 +15,8 @@ public class DealablePositionTest {
     @Test
     public void testIsNotOpen() {
         DealablePosition position = new DealablePosition(null);
-        position.setPlayer(new GamePlayer(null), null);
+        position.setPlayer(new GamePlayer(null));
         assertTrue(!position.isOpen());
-    }
-
-    @Test
-    public void testIsDealer() {
-        DealablePosition position = new DealablePosition(null);
-        position.setPlayer(null, PlayerType.DEALER);
-        assertTrue(position.isDealer());
-    }
-
-    @Test
-    public void testIsNotDealer() {
-        DealablePosition position = new DealablePosition(null);
-        assertTrue(!position.isDealer());
     }
 
 }

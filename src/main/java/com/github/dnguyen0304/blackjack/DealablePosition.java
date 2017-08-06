@@ -4,7 +4,6 @@ public class DealablePosition implements Comparable<DealablePosition> {
 
     private BlackjackHand hand;
     private Player player;
-    private PlayerType playerType;
 
     public DealablePosition(BlackjackHand hand) {
         this.hand = hand;
@@ -14,17 +13,12 @@ public class DealablePosition implements Comparable<DealablePosition> {
         return this.player;
     }
 
-    public void setPlayer(Player player, PlayerType type) {
+    public void setPlayer(Player player) {
         this.player = player;
-        this.playerType = type;
     }
 
     public Boolean isOpen() {
         return this.player == null;
-    }
-
-    public Boolean isDealer() {
-        return this.playerType == PlayerType.DEALER;
     }
 
     public void addToHand(BlackjackCard card) {
