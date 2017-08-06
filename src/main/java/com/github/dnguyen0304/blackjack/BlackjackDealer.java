@@ -35,7 +35,7 @@ public class BlackjackDealer implements Dealer {
     }
 
     @Override
-    public void askForBet(Player player) {
+    public void askForBet(CardGamePlayer player) {
         int amount = this.asker.askForBetAmount();
         player.bet(amount);
     }
