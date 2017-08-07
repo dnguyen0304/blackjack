@@ -9,6 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
                 BlackjackGameBuilderTest.class,
                 BlackjackGameTest.class,
                 BlackjackHandTest.class,
+                CollectionsCardShuffleStrategyTest.class,
                 DeckTest.class })
 public class Test {
 

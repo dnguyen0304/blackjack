@@ -23,11 +23,13 @@ public class CardShuffleStrategies {
         @Override
         public Deck shuffle(Drawable cards) {
             List<BlackjackCard> list = new ArrayList<BlackjackCard>();
-            try {
-                BlackjackCard card = cards.draw();
-                list.add(card);
-            } catch (NoSuchElementException e) {
-                // Don't do anything.
+            while (true) {
+                try {
+                    BlackjackCard card = cards.draw();
+                    list.add(card);
+                } catch (NoSuchElementException e) {
+                    break;
+                }
             }
             Collections.shuffle(list, this.random);
             // TODO Change this to use a factory.
