@@ -25,7 +25,22 @@ public class BlackjackGame {
     }
 
     public void play() throws IOException {
+        Iterator<CardGamePlayer> players;
 
+        System.out.println("The game is starting.");
+
+        System.out.println("The dealer is shuffling the cards.");
+        this.dealer.shuffle();
+
+        players = this.createAllPlayerIterator();
+        while (players.hasNext()) {
+            CardGamePlayer player = players.next();
+            System.out.println(String.format("It is %s's turn.", player.getName()));
+            this.dealer.askForBet(player);
+        }
+
+        // TODO Deal the cards.
+        // TODO Dispose the resources.
     }
 
     private Iterator<CardGamePlayer> createAllPlayerIterator() {
