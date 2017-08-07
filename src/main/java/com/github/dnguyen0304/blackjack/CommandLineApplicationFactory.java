@@ -7,7 +7,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.Random;
 
-public class ApplicationFactory {
+public class CommandLineApplicationFactory {
 
     private static final int CHIP_TOTAL = 50;
     private static final int DECK_COUNT = 8;
@@ -15,23 +15,23 @@ public class ApplicationFactory {
 
     private final String[] args;
 
-    public ApplicationFactory(String[] args) {
+    public CommandLineApplicationFactory(String[] args) {
         this.args = args;
     }
 
     // How do you define a generic method signature for returning any object?
-    public Application create() {
+    public CommandLineApplication create() {
         BlackjackGameBuilder builder = new BlackjackGameBuilder();
 
         // Create the players.
         for (String name : this.args) {
-            CardGamePlayer player = new BlackjackPlayer(name, ApplicationFactory.CHIP_TOTAL);
+            CardGamePlayer player = new BlackjackPlayer(name, CommandLineApplicationFactory.CHIP_TOTAL);
             builder.withPlayer(player);
         }
 
         // Create the shoe.
         Deck shoe = Deck.standard52();
-        for (int i = 0; i < ApplicationFactory.DECK_COUNT - 1; i++) {
+        for (int i = 0; i < CommandLineApplicationFactory.DECK_COUNT - 1; i++) {
             Deck deck = Deck.standard52();
             deck.stackOnto(shoe);
         }
@@ -48,7 +48,7 @@ public class ApplicationFactory {
         BlackjackAsker asker = new BlackjackAsker(in, out);
 
         // Create the dealer.
-        CardGamePlayer player = new BlackjackPlayer(ApplicationFactory.DEALER_NAME, 0);
+        CardGamePlayer player = new BlackjackPlayer(CommandLineApplicationFactory.DEALER_NAME, 0);
         Dealer dealer = new BlackjackDealer(player, shoe, shufflingMachine, asker);
         builder.withDealer(dealer);
 
@@ -56,7 +56,7 @@ public class ApplicationFactory {
         BlackjackGame game = builder.build();
 
         // Create the application.
-        Application application = new Application(game);
+        CommandLineApplication application = new CommandLineApplication(game);
 
         return application;
     }

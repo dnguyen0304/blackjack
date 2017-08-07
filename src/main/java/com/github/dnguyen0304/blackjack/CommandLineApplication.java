@@ -2,11 +2,11 @@ package com.github.dnguyen0304.blackjack;
 
 import java.io.IOException;
 
-public class Application {
+public class CommandLineApplication {
 
     private BlackjackGame game;
 
-    public Application(BlackjackGame game) {
+    public CommandLineApplication(BlackjackGame game) {
         this.game = game;
     }
 
