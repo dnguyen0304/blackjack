@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ BlackjackGameBuilderTest.class,
+@SuiteClasses({ BlackjackDealerTest.class,
+                BlackjackGameBuilderTest.class,
                 BlackjackGameTest.class,
                 BlackjackHandTest.class,
                 DeckTest.class })

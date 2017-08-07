@@ -38,7 +38,10 @@ public class BlackjackDealer implements Dealer {
 
     @Override
     public void askForBet(CardGamePlayer player) throws IOException {
-        int amount = this.asker.askForBetAmount(player);
+        int amount = 0;
+        if (this != player) {
+            amount = this.asker.askForBetAmount(player);
+        }
         player.bet(amount);
     }
 
