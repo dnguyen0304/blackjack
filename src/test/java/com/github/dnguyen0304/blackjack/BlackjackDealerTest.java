@@ -5,8 +5,10 @@ import static org.junit.Assert.assertNotEquals;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.Writer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +24,9 @@ public class BlackjackDealerTest {
 
         Reader reader = new StringReader(String.valueOf(1));
         BufferedReader in = new BufferedReader(reader);
-        BlackjackAsker asker = new BlackjackAsker(in);
+        // How do you create a null Writer?
+        Writer out = new PrintWriter(System.out);
+        BlackjackAsker asker = new BlackjackAsker(in, out);
 
         this.dealer = new BlackjackDealer(player, null, null, asker);
         this.other = new BlackjackPlayer(null, 0);

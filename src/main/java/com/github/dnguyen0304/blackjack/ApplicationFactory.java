@@ -2,7 +2,9 @@ package com.github.dnguyen0304.blackjack;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.Writer;
 import java.util.Random;
 
 public class ApplicationFactory {
@@ -42,7 +44,8 @@ public class ApplicationFactory {
         // Create the asker.
         Reader reader = new InputStreamReader(System.in);
         BufferedReader in = new BufferedReader(reader);
-        BlackjackAsker asker = new BlackjackAsker(in);
+        Writer out = new PrintWriter(System.out);
+        BlackjackAsker asker = new BlackjackAsker(in, out);
 
         // Create the dealer.
         CardGamePlayer player = new BlackjackPlayer(ApplicationFactory.DEALER_NAME, 0);
